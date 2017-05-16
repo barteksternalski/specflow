@@ -62,19 +62,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimpleBrowserTestSteps.cs" />
-    <Compile Include="SpecFlowFeature1.feature.cs">
+    <Compile Include="SimpleBrowserTest.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SpecFlowFeature1.feature</DependentUpon>
+      <DependentUpon>SimpleBrowserTest.feature</DependentUpon>
     </Compile>
+    <Compile Include="SimpleBrowserTestSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="SpecFlowFeature1.feature">
+    <None Include="SimpleBrowserTest.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>SpecFlowFeature1.feature.cs</LastGenOutput>
+      <LastGenOutput>SimpleBrowserTest.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

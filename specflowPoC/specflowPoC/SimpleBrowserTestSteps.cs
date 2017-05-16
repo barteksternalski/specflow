@@ -25,7 +25,7 @@ namespace specflowPoC
             _driver = new FirefoxDriver();
             _driver.Manage().Window.Maximize();
         }
-        
+
         [When(@"User opens '(.*)' website")]
         public void WhenUserOpensWebsite(string webAddress)
         {
