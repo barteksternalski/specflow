@@ -79,10 +79,12 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("user registration")]
-        public virtual void UserRegistration()
+        [NUnit.Framework.DescriptionAttribute("User registration")]
+        [NUnit.Framework.TestCaseAttribute("kokos", "banan", "single", "dance", "Poland", "9393939344", "kokos", "banan@op.pl", "qwe12345", "qwe12345", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("test1", "test2", "single", "dance", "Poland", "9393757344", "baton", "baton@op.pl", "qwe12345", "qwe12345", new string[0])]
+        public virtual void UserRegistration(string firstname, string lastname, string status, string hobby, string country, string phone, string user, string mail, string pass, string confirmation, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("user registration", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User registration", exampleTags);
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
@@ -102,16 +104,16 @@ this.ScenarioSetup(scenarioInfo);
                         "Password",
                         "ConfirmPassword"});
             table1.AddRow(new string[] {
-                        "kokos",
-                        "banan",
-                        "single",
-                        "dance",
-                        "Poland",
-                        "9393939344",
-                        "kokos",
-                        "banan@op.pl",
-                        "qwe12345",
-                        "qwe12345"});
+                        string.Format("{0}", firstname),
+                        string.Format("{0}", lastname),
+                        string.Format("{0}", status),
+                        string.Format("{0}", hobby),
+                        string.Format("{0}", country),
+                        string.Format("{0}", phone),
+                        string.Format("{0}", user),
+                        string.Format("{0}", mail),
+                        string.Format("{0}", pass),
+                        string.Format("{0}", confirmation)});
 #line 10
   testRunner.And("User fill registration form with following data", ((string)(null)), table1, "And ");
 #line 13
