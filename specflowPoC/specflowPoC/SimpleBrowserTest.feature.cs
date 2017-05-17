@@ -80,9 +80,9 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("User registration")]
-        [NUnit.Framework.TestCaseAttribute("kokos", "banan", "single", "dance", "Poland", "9393939344", "kokos", "banan@op.pl", "qwe12345", "qwe12345", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("test1", "test2", "single", "dance", "Poland", "9393757344", "baton", "baton@op.pl", "qwe12345", "qwe12345", new string[0])]
-        public virtual void UserRegistration(string firstname, string lastname, string status, string hobby, string country, string phone, string user, string mail, string pass, string confirmation, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("kokos", "banan", "single", "dance", "Poland", "9393939344", "banan", "banan@op.pl", "qwe12345", "qwe12345", "Error: E-mail address already exists", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("test1", "test2", "single", "dance", "Poland", "9393757344", "sputnik", "bputnik@op.pl", "qwe12345", "qwe12345", "Thank you for your registration", new string[0])]
+        public virtual void UserRegistration(string firstname, string lastname, string status, string hobby, string country, string phone, string user, string mail, string pass, string confirmation, string message, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User registration", exampleTags);
 #line 7
@@ -117,7 +117,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 10
   testRunner.And("User fill registration form with following data", ((string)(null)), table1, "And ");
 #line 13
- testRunner.Then("User is created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("Message {0} is displayed", message), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

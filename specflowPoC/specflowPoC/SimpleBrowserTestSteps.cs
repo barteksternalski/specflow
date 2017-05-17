@@ -47,12 +47,10 @@ namespace specflowPoC
 
         }
 
-        [Then(@"User is created")]
-        public void ThenUserIsCreated()
+        [Then(@"Message (.*) is displayed")]
+        public void ThenMessageIsDisplayed(string message)
         {
-            Assert.AreEqual("Thank you for your registration", registrationPage.getConfirmationMessage());
+            Assert.AreEqual(message, registrationPage.getConfirmationMessage());
         }
-
-
     }
 }
