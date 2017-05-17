@@ -86,6 +86,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
+ testRunner.When("User opens \'http://demoqa.com\' website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 9
  testRunner.When("User opens registration page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -110,9 +112,9 @@ this.ScenarioSetup(scenarioInfo);
                         "banan@op.pl",
                         "qwe12345",
                         "qwe12345"});
-#line 9
+#line 10
   testRunner.And("User fill registration form with following data", ((string)(null)), table1, "And ");
-#line 12
+#line 13
  testRunner.Then("User is created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

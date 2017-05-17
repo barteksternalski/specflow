@@ -5,6 +5,7 @@ Scenario: Open website
 	Then Website title is 'Demoqa | Just another WordPress site'
 
 Scenario: user registration
+	When User opens 'http://demoqa.com' website
 	When User opens registration page
 		And User fill registration form with following data
 			| FirstName | LastName | MartialStatus | Hobby | Country | PhoneNumber | Username | Email       | Password | ConfirmPassword |
