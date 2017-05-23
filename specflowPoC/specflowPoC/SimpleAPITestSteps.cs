@@ -10,7 +10,7 @@ namespace specflowPoC
 {
     public class User
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Location { get; set; }
     }
@@ -51,7 +51,7 @@ namespace specflowPoC
             dynamic userData = table.CreateDynamicInstance();
             
             User newUser = new User();
-            newUser.Id = userData.Id.ToString();
+            newUser.Id = userData.Id;
             newUser.Name = userData.Name;
             newUser.Location = userData.Location;
 
@@ -72,9 +72,8 @@ namespace specflowPoC
         [When(@"I delete user with id (.*)")]
         public void WhenIDeleteUserWithId(string userId)
         {
-            request = new RestRequest("/users", Method.DELETE);
+            request = new RestRequest("/users/" + userId, Method.DELETE);
             request.AddHeader("Accept", "application/json");
-            request.AddParameter("id", userId);
             response = client.Execute(request);
         }
 
