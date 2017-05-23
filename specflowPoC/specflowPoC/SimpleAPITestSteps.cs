@@ -69,5 +69,21 @@ namespace specflowPoC
             Console.Write(response.Content);
         }
 
+        [When(@"I delete user with id (.*)")]
+        public void WhenIDeleteUserWithId(string userId)
+        {
+            request = new RestRequest("/users", Method.DELETE);
+            request.AddHeader("Accept", "application/json");
+            request.AddParameter("id", userId);
+            response = client.Execute(request);
+        }
+
+        [Then(@"List of users is updated")]
+        public void ThenListOfUsersIsUpdated()
+        {
+            Console.Write(response.Content);
+        }
+
+
     }
 }

@@ -123,6 +123,31 @@ this.FeatureBackground();
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("03 Remove created user")]
+        [NUnit.Framework.CategoryAttribute("API")]
+        [NUnit.Framework.TestCaseAttribute("7", new string[0])]
+        public virtual void _03RemoveCreatedUser(string id, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "API"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("03 Remove created user", @__tags);
+#line 24
+this.ScenarioSetup(scenarioInfo);
+#line 4
+this.FeatureBackground();
+#line 25
+ testRunner.When(string.Format("I delete user with id {0}", id), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 26
+ testRunner.Then("List of users is updated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

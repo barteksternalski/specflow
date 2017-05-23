@@ -19,3 +19,12 @@ Scenario Outline: 02 Creatne new user
 	Examples:
 		| id | name  | location |
 		| 7  | kokos | radom    |
+
+@API
+Scenario Outline: 03 Remove created user
+	When I delete user with id <id>
+	Then List of users is updated
+
+	Examples:
+		| id |
+		| 7  |
