@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "kokos",
+      "location": "jungle"
+    },
+    {
+      "id": "2",
+      "name": "baton",
+      "location": "usa"
+    }
+  ]
+}

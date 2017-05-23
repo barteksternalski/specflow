@@ -72,11 +72,11 @@ namespace specflowPoC
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Simple GET")]
+        [NUnit.Framework.DescriptionAttribute("01 Simple GET")]
         [NUnit.Framework.CategoryAttribute("API")]
-        public virtual void SimpleGET()
+        public virtual void _01SimpleGET()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Simple GET", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01 Simple GET", new string[] {
                         "API"});
 #line 8
 this.ScenarioSetup(scenarioInfo);
@@ -85,16 +85,16 @@ this.FeatureBackground();
 #line 9
  testRunner.When("I request list of users", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 10
- testRunner.Then("No of users is 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("No of users is 3", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Creatne new user")]
+        [NUnit.Framework.DescriptionAttribute("02 Creatne new user")]
         [NUnit.Framework.CategoryAttribute("API")]
         [NUnit.Framework.TestCaseAttribute("7", "kokos", "radom", new string[0])]
-        public virtual void CreatneNewUser(string id, string name, string location, string[] exampleTags)
+        public virtual void _02CreatneNewUser(string id, string name, string location, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "API"};
@@ -102,7 +102,7 @@ this.FeatureBackground();
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Creatne new user", @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("02 Creatne new user", @__tags);
 #line 13
 this.ScenarioSetup(scenarioInfo);
 #line 4

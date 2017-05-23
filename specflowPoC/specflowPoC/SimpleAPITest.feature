@@ -5,12 +5,12 @@ Background:
 	Given Service "http://localhost:3000" is up and running
 
 @API
-Scenario: Simple GET
+Scenario: 01 Simple GET
 	When I request list of users
-	Then No of users is 2
+	Then No of users is 3
 
 @API
-Scenario Outline: Creatne new user
+Scenario Outline: 02 Creatne new user
 	When I create new user with following data
 		| Id   | Name   | Location   |
 		| <id> | <name> | <location> |

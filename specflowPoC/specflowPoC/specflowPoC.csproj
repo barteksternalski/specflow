@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="info.json" />
     <None Include="packages.config" />
     <None Include="SimpleBrowserTest.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
