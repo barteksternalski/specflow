@@ -9,7 +9,7 @@ namespace specflowPoC
         protected IWebDriver driver;
         protected RegistrationPage registrationPage;
 
-        [BeforeScenario]
+        [BeforeScenario("UISmoke")]
         public void setupBrowser()
         {
             driver = new FirefoxDriver();
@@ -17,7 +17,7 @@ namespace specflowPoC
             registrationPage = new RegistrationPage(driver);
         }
 
-        [AfterScenario]
+        [AfterScenario("UISmoke")]
         public void tearDownBrowser()
         {
             driver.Dispose();

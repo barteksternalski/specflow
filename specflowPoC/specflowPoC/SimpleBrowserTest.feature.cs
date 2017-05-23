@@ -65,14 +65,16 @@ namespace specflowPoC
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Open website")]
+        [NUnit.Framework.CategoryAttribute("UISmoke")]
         public virtual void OpenWebsite()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Open website", ((string[])(null)));
-#line 3
-this.ScenarioSetup(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Open website", new string[] {
+                        "UISmoke"});
 #line 4
- testRunner.When("User opens \'http://demoqa.com\' website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 5
+ testRunner.When("User opens \'http://demoqa.com\' website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 6
  testRunner.Then("Website title is \'Demoqa | Just another WordPress site\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -80,16 +82,23 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("User registration")]
+        [NUnit.Framework.CategoryAttribute("UISmoke")]
         [NUnit.Framework.TestCaseAttribute("kokos", "banan", "single", "dance", "Poland", "9393939344", "banan", "banan@op.pl", "qwe12345", "qwe12345", "Error: E-mail address already exists", new string[0])]
         [NUnit.Framework.TestCaseAttribute("test1", "test2", "single", "dance", "Poland", "9393757344", "sputnik", "bputnik@op.pl", "qwe12345", "qwe12345", "Thank you for your registration", new string[0])]
         public virtual void UserRegistration(string firstname, string lastname, string status, string hobby, string country, string phone, string user, string mail, string pass, string confirmation, string message, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User registration", exampleTags);
-#line 7
-this.ScenarioSetup(scenarioInfo);
-#line 8
- testRunner.When("User opens \'http://demoqa.com\' website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+            string[] @__tags = new string[] {
+                    "UISmoke"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User registration", @__tags);
 #line 9
+this.ScenarioSetup(scenarioInfo);
+#line 10
+ testRunner.When("User opens \'http://demoqa.com\' website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 11
  testRunner.When("User opens registration page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -114,9 +123,9 @@ this.ScenarioSetup(scenarioInfo);
                         string.Format("{0}", mail),
                         string.Format("{0}", pass),
                         string.Format("{0}", confirmation)});
-#line 10
+#line 12
   testRunner.And("User fill registration form with following data", ((string)(null)), table1, "And ");
-#line 13
+#line 15
  testRunner.Then(string.Format("Message {0} is displayed", message), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

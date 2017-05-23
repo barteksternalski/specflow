@@ -1,9 +1,11 @@
 ﻿Feature: Simple browser test
 
+@UISmoke
 Scenario: Open website
 	When User opens 'http://demoqa.com' website
 	Then Website title is 'Demoqa | Just another WordPress site'
 
+@UISmoke
 Scenario Outline: User registration
 	When User opens 'http://demoqa.com' website
 	When User opens registration page
