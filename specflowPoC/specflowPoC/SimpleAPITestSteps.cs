@@ -23,6 +23,7 @@ namespace specflowPoC
         RestRequest request = new RestRequest();
         IRestResponse response = new RestResponse();
         List<User> userList = new List<User>();
+        static int userCount = 0;
 
         [Given(@"Service ""(.*)"" is up and running")]
         public void GivenServiceIsUpAndRunning(string serviceRoot)
@@ -42,7 +43,8 @@ namespace specflowPoC
         public void ThenIGetTheCurrentServiceVersion(int count)
         {
             userList = JsonConvert.DeserializeObject<List<User>>(response.Content);
-            Assert.AreEqual(count, userList.Count);
+            userCount = userList.Count;
+            Assert.AreEqual(count, userList.Count);            
         }
 
         [When(@"I create new user with following data")]
@@ -66,7 +68,11 @@ namespace specflowPoC
         [Then(@"User is created")]
         public void ThenUserIsCreated()
         {
-            Console.Write(response.Content);
+            request = new RestRequest("/users", Method.GET);
+            request.AddHeader("Accept", "application/json");
+            response = client.Execute(request);
+            userList = JsonConvert.DeserializeObject<List<User>>(response.Content);
+            Assert.AreEqual(userCount + 1, userList.Count);
         }
 
         [When(@"I delete user with id (.*)")]
@@ -80,7 +86,11 @@ namespace specflowPoC
         [Then(@"List of users is updated")]
         public void ThenListOfUsersIsUpdated()
         {
-            Console.Write(response.Content);
+            request = new RestRequest("/users", Method.GET);
+            request.AddHeader("Accept", "application/json");
+            response = client.Execute(request);
+            userList = JsonConvert.DeserializeObject<List<User>>(response.Content);
+            Assert.AreEqual(userCount, userList.Count);
         }
 
 
