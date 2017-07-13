@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<NUnitProject>
+  <Settings activeconfig="Debug"/>
+  <Config name="Debug" configfile="bin\Debug\Infusion.Specflow.Tests.Template.dll.config">
+    <assembly path="bin\Debug\Infusion.Specflow.Tests.Template.dll"/>
+  </Config>
+  <Config name="Debug.Local.Firefox" configfile="bin\Debug.Local.Firefox\Infusion.Specflow.Tests.Template.dll.config">
+    <assembly path="bin\Debug.Local.Firefox\Infusion.Specflow.Tests.Template.dll"/>
+  </Config>
+</NUnitProject>
