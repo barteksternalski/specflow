@@ -6,9 +6,9 @@ using System.Configuration;
 
 namespace specflowPoC.EnvironmentSetup
 {
-    internal static class WebdriverSetup
+    public class WebdriverSetup
     {
-        private static IWebDriver _driver;
+        public static IWebDriver _driver;
 
         public static IWebDriver InitBrowser(string browserName)
         {
