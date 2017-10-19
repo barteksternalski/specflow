@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using specflowPoC.Locators;
+using specflowPoC.TestDataObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,7 +72,8 @@ namespace specflowPoC.Pages
 
         public void CreateNewUser(Table dataTable, String userId)
         {
-            dynamic userData = dataTable.CreateDynamicInstance();
+
+            var userData = dataTable.CreateInstance<CreateUserFormObject>();
 
             if (!userData.UserType.Equals("{null}")) SelectUserType(userData.UserType);
             if (!userData.UserId.Equals("{null}")) getElement(By.Id(CreateUserLocators.ID_userIdInputField)).SendKeys(userId);

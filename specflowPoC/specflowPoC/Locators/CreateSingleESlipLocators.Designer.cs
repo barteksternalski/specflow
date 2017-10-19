@@ -277,6 +277,15 @@ namespace specflowPoC.Locators {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to //ngui-auto-complete//li[contains(text(),&apos;{0}&apos;)].
+        /// </summary>
+        internal static string XPATH_autocompletePopup {
+            get {
+                return ResourceManager.GetString("XPATH_autocompletePopup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to //button[text()=&apos;Back&apos;].
         /// </summary>
         internal static string XPATH_backButton {

@@ -1,11 +1,7 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
 using specflowPoC.Locators;
+using specflowPoC.TestDataObjects;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
@@ -26,10 +22,11 @@ namespace specflowPoC.Pages
 
         public void FillCustomerInformation(IWebDriver driver, String name, Table dataTable)
         {
-            dynamic userData = dataTable.CreateDynamicInstance();
+            var userData = dataTable.CreateInstance<CustomerInfoFormObject>();
 
             if (!userData.EslipName.Equals("{null}")) getElement(By.Id(CreateSingleESlipLocators.ID_nameInputField)).SendKeys(name);
-            if (!userData.PolicyNumber.Equals("{null}")) getElement(By.Id(CreateSingleESlipLocators.ID_policyNumberInputField)).SendKeys(userData.PolicyNumber);
+            string temp = userData.PolicyNumber;
+            if (!userData.PolicyNumber.Equals("{null}")) getElement(By.Id(CreateSingleESlipLocators.ID_policyNumberInputField)).SendKeys(temp);
             if (!userData.Email.Equals("{null}")) getElement(By.Id(CreateSingleESlipLocators.ID_emailInputField)).SendKeys(userData.Email);
             if (!userData.PhoneNumber.Equals("{null}")) getElement(By.Id(CreateSingleESlipLocators.ID_phoneNumberInputField)).SendKeys(userData.PhoneNumber);
             if (!userData.Language.Equals("{null}"))
@@ -65,23 +62,16 @@ namespace specflowPoC.Pages
             if (!userData.Insurer.Equals("{null}"))
             {
                 System.Threading.Thread.Sleep(1000);
-                Actions builder = new Actions(driver);
-                builder
-                    .MoveToElement(getElement(By.XPath(CreateSingleESlipLocators.XPATH_carrierInputField)))
-                    .Click()
-                    .SendKeys(userData.Insurer)
-                    .Pause(1000)
-                    .SendKeys(Keys.Enter)
-                    .Build()
-                    .Perform();
-
+                getElement(By.XPath(CreateSingleESlipLocators.XPATH_carrierInputField)).SendKeys(userData.Insurer);
+                System.Threading.Thread.Sleep(1000);
+                getElement(By.XPath(CreateSingleESlipLocators.XPATH_autocompletePopup.Replace("{0}", userData.Insurer))).Click();
             }
             if (!userData.Brokerage.Equals("{null}")) getElement(By.Id(CreateSingleESlipLocators.XPATH_brokerageInputField)).SendKeys(userData.Brokerage);
         }
 
         public void SaveDraft()
         {
-            getElement(By.Id(CreateSingleESlipLocators.XPATH_saveDraftButton)).Click();
+            getElement(By.XPath(CreateSingleESlipLocators.XPATH_saveDraftButton)).Click();
             System.Threading.Thread.Sleep(1500);
         }
 

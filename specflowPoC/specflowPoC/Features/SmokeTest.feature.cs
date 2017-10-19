@@ -193,7 +193,7 @@ namespace specflowPoC.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("005. User can login")]
         [NUnit.Framework.CategoryAttribute("UISmoke")]
-        [NUnit.Framework.TestCaseAttribute("default.carrier@csiodev.onmicrosoft.com", "Si3ple9Ass", null)]
+        [NUnit.Framework.TestCaseAttribute("bartBrokerage@csiodev.onmicrosoft.com", "2@d!tQy4", null)]
         public virtual void _005_UserCanLogin(string login, string password, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -216,10 +216,10 @@ namespace specflowPoC.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("User is able to fill Customer and Policy Information")]
+        [NUnit.Framework.DescriptionAttribute("006. User is able to fill Customer and Policy Information")]
         [NUnit.Framework.CategoryAttribute("UISmoke")]
-        [NUnit.Framework.TestCaseAttribute("banan", "123123123", "bartavanade@gmail.com", "123123123", "English", "Manitoba", "temp1", "temp1", "krk", "30300", "12/12/2020", "12/12/2022", "RSA Canada", "Some Broker", null)]
-        public virtual void UserIsAbleToFillCustomerAndPolicyInformation(string name, string policyNo, string email, string phoneNo, string lang, string province, string address1, string address2, string city, string code, string effDate, string expDate, string insurer, string broker, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("banan", "123123123", "bartavanade@gmail.com", "123123123", "English", "Manitoba", "temp1", "temp1", "krk", "30300", "12/12/2020", "12/12/2022", "RSA Canada", "{null}", null)]
+        public virtual void _006_UserIsAbleToFillCustomerAndPolicyInformation(string name, string policyNo, string email, string phoneNo, string lang, string province, string address1, string address2, string city, string code, string effDate, string expDate, string insurer, string broker, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "UISmoke"};
@@ -227,7 +227,7 @@ namespace specflowPoC.Features
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User is able to fill Customer and Policy Information", @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("006. User is able to fill Customer and Policy Information", @__tags);
 #line 56
  this.ScenarioSetup(scenarioInfo);
 #line 57
@@ -275,11 +275,11 @@ namespace specflowPoC.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("006. Tear down browser")]
+        [NUnit.Framework.DescriptionAttribute("007. Tear down browser")]
         [NUnit.Framework.CategoryAttribute("UISmoke")]
-        public virtual void _006_TearDownBrowser()
+        public virtual void _007_TearDownBrowser()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("006. Tear down browser", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("007. Tear down browser", new string[] {
                         "UISmoke"});
 #line 69
  this.ScenarioSetup(scenarioInfo);

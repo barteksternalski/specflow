@@ -125,9 +125,8 @@ namespace specflowPoC
         public void ThenESlipIsDisplayedOnDraftsList(string draftName)
         {
             _landingPage.NavigateToTab("Drafts");
-            Assert.IsTrue(_listOfDrafts.VerifyIfESlipIsDisplayed(draftName));
+            Assert.IsTrue(_listOfDrafts.VerifyIfESlipIsDisplayed(eSlipName));
         }
-
 
     }
 }

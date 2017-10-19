@@ -81,7 +81,7 @@ namespace specflowPoC.Pages
                 try
                 {
                     System.Threading.Thread.Sleep(1000);
-                    if (getElements(By.XPath(ListOfDraftsLocators.XPATH_eSlipByName.Replace("{0}", "name"))).Count > 0)
+                    if (getElements(By.XPath(ListOfDraftsLocators.XPATH_eSlipByName.Replace("{0}", name))).Count > 0)
                     {
                         Console.WriteLine("INFO: Eslip found!");
                         return true;

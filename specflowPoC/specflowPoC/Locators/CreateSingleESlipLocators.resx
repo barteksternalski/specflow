@@ -282,4 +282,7 @@
   <data name="XPATH_warningMessages" xml:space="preserve">
     <value>//md-error/span</value>
   </data>
+  <data name="XPATH_autocompletePopup" xml:space="preserve">
+    <value>//ngui-auto-complete//li[contains(text(),'{0}')]</value>
+  </data>
 </root>

@@ -49,11 +49,11 @@
 		Then Main page is displayed
 
 		Examples:
-			| login                                   | password   |
-			| default.carrier@csiodev.onmicrosoft.com | Si3ple9Ass |
+			| login                                 | password |
+			| bartBrokerage@csiodev.onmicrosoft.com | 2@d!tQy4 |
 
 	@UISmoke
-	Scenario Outline: User is able to fill Customer and Policy Information
+	Scenario Outline: 006. User is able to fill Customer and Policy Information
 		Given User is creating new eEslip
 		When User creates new eSlip with given customer and policy information with given data
 			| EslipName | PolicyNumber | Email   | PhoneNumber | Language | Province   | AddressLine1 | AddressLine2 | City   | PostalCode | EffectiveDate | ExpirationDate | Insurer   | Brokerage |
@@ -62,9 +62,9 @@
 		Then ESlip '<name>' is displayed on Drafts list
 
 		Examples:
-			| name  | policyNo  | email                 | phoneNo   | lang    | province | address1 | address2 | city | code  | effDate    | expDate    | insurer    | broker      |
-			| banan | 123123123 | bartavanade@gmail.com | 123123123 | English | Manitoba | temp1    | temp1    | krk  | 30300 | 12/12/2020 | 12/12/2022 | RSA Canada | Some Broker |
+			| name  | policyNo  | email                 | phoneNo   | lang    | province | address1 | address2 | city | code  | effDate    | expDate    | insurer    | broker |
+			| banan | 123123123 | bartavanade@gmail.com | 123123123 | English | Manitoba | temp1    | temp1    | krk  | 30300 | 12/12/2020 | 12/12/2022 | RSA Canada | {null} |
 
 	@UISmoke
-	Scenario: 006. Tear down browser
+	Scenario: 007. Tear down browser
 		Given Close browser
