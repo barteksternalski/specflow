@@ -143,6 +143,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SmokeTest.feature</DependentUpon>
     </Compile>
+    <Compile Include="StepsUI\APISteps.cs" />
     <Compile Include="StepsUI\BaseSteps.cs" />
     <Compile Include="StepsUI\GeneralSteps.cs" />
     <Compile Include="StepsUI\IntegrationAPISteps.cs" />
