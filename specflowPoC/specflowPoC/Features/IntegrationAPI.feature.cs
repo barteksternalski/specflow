@@ -64,15 +64,22 @@ namespace specflowPoC.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify successful sign in request")]
-        [NUnit.Framework.TestCaseAttribute("SignIn", "default.carrier@csiodev.onmicrosoft.com", "Infusi0n!", null)]
-        public virtual void VerifySuccessfulSignInRequest(string comm, string login, string pass, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("01. Verify successful sign in request")]
+        [NUnit.Framework.CategoryAttribute("IntegrationAPI")]
+        [NUnit.Framework.TestCaseAttribute("DEV", "SignIn", "default.carrier@csiodev.onmicrosoft.com", "Infusi0n!", null)]
+        public virtual void _01_VerifySuccessfulSignInRequest(string env, string comm, string login, string pass, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify successful sign in request", exampleTags);
-#line 4
-  this.ScenarioSetup(scenarioInfo);
+            string[] @__tags = new string[] {
+                    "IntegrationAPI"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01. Verify successful sign in request", @__tags);
 #line 5
-    testRunner.Given("System API is up and running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ this.ScenarioSetup(scenarioInfo);
+#line 6
+ testRunner.Given(string.Format("System API on \'{0}\' environment is up and running", env), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Command",
@@ -82,30 +89,37 @@ namespace specflowPoC.Features
                         string.Format("{0}", comm),
                         string.Format("{0}", login),
                         string.Format("{0}", pass)});
-#line 6
-    testRunner.When("User sends sign in request with following data", ((string)(null)), table1, "When ");
-#line 9
-    testRunner.Then("Access token is sent back by the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 7
+ testRunner.When("User sends sign in request with following data", ((string)(null)), table1, "When ");
+#line 10
+ testRunner.Then("Access token is sent back by the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify unsuccessful sign in request")]
-        [NUnit.Framework.TestCaseAttribute("SignIn", "admin.five@csiodev.onmicrosoft.com", "BadPass", "Invalid username or password", null)]
-        [NUnit.Framework.TestCaseAttribute("SignIn", "admin.five@op.pl", "Si3ple9Ass", "account must be added to the csiodev.onmicrosoft.com directory", null)]
-        [NUnit.Framework.TestCaseAttribute("SignIn", "admin.five@csiodev.onmicrosoft.com", "", "Password field is required", null)]
-        [NUnit.Framework.TestCaseAttribute("SignIn", "", "Kokos", "UserId field is required", null)]
-        [NUnit.Framework.TestCaseAttribute("SignIn", "", "", "UserId field is required", null)]
-        [NUnit.Framework.TestCaseAttribute("SignIn", "", "", "Password field is required", null)]
-        [NUnit.Framework.TestCaseAttribute("SignIn", "dsadsa", "dsadsa", "Unknown User Type", null)]
-        public virtual void VerifyUnsuccessfulSignInRequest(string comm, string login, string pass, string message, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("02. Verify unsuccessful sign in request")]
+        [NUnit.Framework.CategoryAttribute("IntegrationAPI")]
+        [NUnit.Framework.TestCaseAttribute("DEV", "SignIn", "admin.five@csiodev.onmicrosoft.com", "BadPass", "Invalid username or password", null)]
+        [NUnit.Framework.TestCaseAttribute("DEV", "SignIn", "admin.five@op.pl", "Si3ple9Ass", "account must be added to the csiodev.onmicrosoft.com directory", null)]
+        [NUnit.Framework.TestCaseAttribute("DEV", "SignIn", "admin.five@csiodev.onmicrosoft.com", "", "Password field is required", null)]
+        [NUnit.Framework.TestCaseAttribute("DEV", "SignIn", "", "Kokos", "UserId field is required", null)]
+        [NUnit.Framework.TestCaseAttribute("DEV", "SignIn", "", "", "UserId field is required", null)]
+        [NUnit.Framework.TestCaseAttribute("DEV", "SignIn", "", "", "Password field is required", null)]
+        [NUnit.Framework.TestCaseAttribute("DEV", "SignIn", "dsadsa", "dsadsa", "Unknown User Type", null)]
+        public virtual void _02_VerifyUnsuccessfulSignInRequest(string env, string comm, string login, string pass, string message, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify unsuccessful sign in request", exampleTags);
-#line 15
-  this.ScenarioSetup(scenarioInfo);
-#line 16
-    testRunner.Given("System API is up and running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+            string[] @__tags = new string[] {
+                    "IntegrationAPI"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("02. Verify unsuccessful sign in request", @__tags);
+#line 17
+ this.ScenarioSetup(scenarioInfo);
+#line 18
+ testRunner.Given(string.Format("System API on \'{0}\' environment is up and running", env), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Command",
@@ -115,10 +129,56 @@ namespace specflowPoC.Features
                         string.Format("{0}", comm),
                         string.Format("{0}", login),
                         string.Format("{0}", pass)});
-#line 17
-    testRunner.When("User sends sign in request with following data", ((string)(null)), table2, "When ");
-#line 20
-    testRunner.Then(string.Format("System responses with proper error \'{0}\'", message), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 19
+ testRunner.When("User sends sign in request with following data", ((string)(null)), table2, "When ");
+#line 22
+ testRunner.Then(string.Format("System responses with proper error \'{0}\'", message), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("03. Verify successful eSlip request")]
+        [NUnit.Framework.CategoryAttribute("IntegrationAPI")]
+        [NUnit.Framework.TestCaseAttribute("DEV", "2018-01-20", "sitBroker", "sitBroker", "b.sternalski@avanade.com", "2018-01-01", "2018-10-31", "Awesome Infurance", "EN", "PL102938", null)]
+        public virtual void _03_VerifySuccessfulESlipRequest(string env, string reqDate, string otherId, string brokerName, string email, string effDate, string expDate, string insuranceName, string lang, string policyNo, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "IntegrationAPI"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("03. Verify successful eSlip request", @__tags);
+#line 35
+ this.ScenarioSetup(scenarioInfo);
+#line 36
+ testRunner.Given(string.Format("System API on \'{0}\' environment is up and running", env), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "RequestDate",
+                        "OtherID",
+                        "CommercialName",
+                        "UserEmail",
+                        "EffectiveDate",
+                        "ExpirationDate",
+                        "InsuranceCompName",
+                        "Language",
+                        "PolicyNumber"});
+            table3.AddRow(new string[] {
+                        string.Format("{0}", reqDate),
+                        string.Format("{0}", otherId),
+                        string.Format("{0}", brokerName),
+                        string.Format("{0}", email),
+                        string.Format("{0}", effDate),
+                        string.Format("{0}", expDate),
+                        string.Format("{0}", insuranceName),
+                        string.Format("{0}", lang),
+                        string.Format("{0}", policyNo)});
+#line 37
+ testRunner.When("User sends eSlip creation request with following data", ((string)(null)), table3, "When ");
+#line 40
+ testRunner.Then("ESlip is properly created in the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

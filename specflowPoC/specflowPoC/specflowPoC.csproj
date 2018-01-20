@@ -143,12 +143,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SmokeTest.feature</DependentUpon>
     </Compile>
-    <Compile Include="StepsUI\BaseSteps.cs" />
-    <Compile Include="StepsUI\GeneralSteps.cs" />
-    <Compile Include="StepsUI\IntegrationAPISteps.cs" />
-    <Compile Include="TestDataObjects\CreateLoginPayloadFromObject.cs" />
+    <Compile Include="StepsDefinition\BaseSteps.cs" />
+    <Compile Include="StepsDefinition\GeneralSteps.cs" />
+    <Compile Include="StepsDefinition\IntegrationAPISteps.cs" />
     <Compile Include="TestDataObjects\CustomerInfoFormObject.cs" />
     <Compile Include="TestDataObjects\CreateUserFormObject.cs" />
+    <Compile Include="TestDataObjects\IntegrationAPIeSlipPaylodObject.cs" />
+    <Compile Include="TestDataObjects\IntegrationAPILoginPayloadObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -172,6 +173,8 @@
     <Content Include="Drivers\geckodriver.exe" />
     <Content Include="Drivers\IEDriverServer.exe" />
     <Content Include="Drivers\MicrosoftWebDriver.exe" />
+    <Content Include="TestFiles\alpaca26kb.jpg" />
+    <Content Include="TestFiles\alpaca5mb.jpg" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Locators\CreateSingleESlipLocators.resx">
