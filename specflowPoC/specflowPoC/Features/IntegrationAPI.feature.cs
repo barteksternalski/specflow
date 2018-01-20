@@ -18,8 +18,8 @@ namespace specflowPoC.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.2.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("IntegrationAPI")]
-    public partial class IntegrationAPIFeature
+    [NUnit.Framework.DescriptionAttribute("API integration")]
+    public partial class APIIntegrationFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
@@ -31,7 +31,7 @@ namespace specflowPoC.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "IntegrationAPI", "\tAs a User\r\n\tI want to have possibility to login and handle eSlip via API", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "API integration", "  As a User I want to verify API integration with the system", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -69,23 +69,22 @@ namespace specflowPoC.Features
         public virtual void VerifySuccessfulSignInRequest(string comm, string login, string pass, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify successful sign in request", exampleTags);
+#line 4
+  this.ScenarioSetup(scenarioInfo);
 #line 5
-this.ScenarioSetup(scenarioInfo);
-#line 6
     testRunner.Given("System API is up and running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Command",
-                        string.Format("{0}", comm)});
-            table1.AddRow(new string[] {
                         "Login",
-                        string.Format("{0}", login)});
+                        "Password"});
             table1.AddRow(new string[] {
-                        "Password",
+                        string.Format("{0}", comm),
+                        string.Format("{0}", login),
                         string.Format("{0}", pass)});
-#line 7
+#line 6
     testRunner.When("User sends sign in request with following data", ((string)(null)), table1, "When ");
-#line 11
+#line 9
     testRunner.Then("Access token is sent back by the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -103,23 +102,22 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void VerifyUnsuccessfulSignInRequest(string comm, string login, string pass, string message, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify unsuccessful sign in request", exampleTags);
-#line 17
-this.ScenarioSetup(scenarioInfo);
-#line 18
+#line 15
+  this.ScenarioSetup(scenarioInfo);
+#line 16
     testRunner.Given("System API is up and running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Command",
-                        string.Format("{0}", comm)});
-            table2.AddRow(new string[] {
                         "Login",
-                        string.Format("{0}", login)});
+                        "Password"});
             table2.AddRow(new string[] {
-                        "Password",
+                        string.Format("{0}", comm),
+                        string.Format("{0}", login),
                         string.Format("{0}", pass)});
-#line 19
+#line 17
     testRunner.When("User sends sign in request with following data", ((string)(null)), table2, "When ");
-#line 23
+#line 20
     testRunner.Then(string.Format("System responses with proper error \'{0}\'", message), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

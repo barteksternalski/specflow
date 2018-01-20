@@ -92,7 +92,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EnvironmentSetup\WebdriverSetup.cs" />
+    <Compile Include="Features\IntegrationAPI.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IntegrationAPI.feature</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\GmailExtractor.cs" />
+    <Compile Include="Helpers\PayloadGenerator.cs" />
     <Compile Include="Helpers\Procedures.cs" />
     <Compile Include="Locators\CreateSingleESlipLocators.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -139,11 +145,17 @@
     </Compile>
     <Compile Include="StepsUI\BaseSteps.cs" />
     <Compile Include="StepsUI\GeneralSteps.cs" />
+    <Compile Include="StepsUI\IntegrationAPISteps.cs" />
+    <Compile Include="TestDataObjects\CreateLoginPayloadFromObject.cs" />
     <Compile Include="TestDataObjects\CustomerInfoFormObject.cs" />
     <Compile Include="TestDataObjects\CreateUserFormObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Features\IntegrationAPI.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>IntegrationAPI.feature.cs</LastGenOutput>
+    </None>
     <None Include="info.json" />
     <None Include="packages.config" />
     <None Include="Features\SmokeTest.feature">

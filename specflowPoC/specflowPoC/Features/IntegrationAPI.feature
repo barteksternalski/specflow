@@ -1,25 +1,22 @@
-﻿Feature: IntegrationAPI
-	As a User
-	I want to have possibility to login and handle eSlip via API
+﻿Feature: API integration
+  As a User I want to verify API integration with the system
 
-Scenario Outline: Verify successful sign in request
+  Scenario Outline: Verify successful sign in request
     Given System API is up and running
     When User sends sign in request with following data
-      | Command   | <comm>  |
-      | Login     | <login> |
-      | Password  | <pass>  |
+      | Command | Login   | Password |
+      | <comm>  | <login> | <pass>   |
     Then Access token is sent back by the system
 
     Examples:
       | comm    | login                                   | pass        |
       | SignIn  | default.carrier@csiodev.onmicrosoft.com | Infusi0n!   |
 
-Scenario Outline: Verify unsuccessful sign in request
+  Scenario Outline: Verify unsuccessful sign in request
     Given System API is up and running
     When User sends sign in request with following data
-      | Command   | <comm>  |
-      | Login     | <login> |
-      | Password  | <pass>  |
+      | Command | Login   | Password |
+      | <comm>  | <login> | <pass>   |
     Then System responses with proper error '<message>'
 
     Examples:
