@@ -8,7 +8,7 @@ namespace specflowPoC.Helpers
 {
     class PayloadGenerator
     {
-        public static String getLoginXML(Table dataTable)
+        public static String getIntegrationAPILoginXML(Table dataTable)
         {
             var userData  = dataTable.CreateInstance<IntegrationAPILoginPayloadObject>();
             return "<LoginRequest>\n" +
@@ -169,5 +169,49 @@ namespace specflowPoC.Helpers
                  "</csio:RemarksInfo>  " +
                  "</eSlipRq>";
         }
+
+        public static String getCSIONetLoginXML(Table dataTable)
+        {
+            var userData = dataTable.CreateInstance<CSIONetLoginPayloadObject>();
+            return "<Request>\n" +
+                    "  <CommandType>" + userData.CommandType + "</CommandType>\n" +
+                    "  <CSIOnetID>" + userData.CSIOnetID + "</CSIOnetID>\n" +
+                    "  <CSIOnetPassword>" + userData.CSIOnetPassword + "</CSIOnetPassword>\n" +
+                    "</Request>\n";
+        }
+
+        public static String getCSIONetMessagesListXML(String sessionGUID, String userGUID, Table dataTable)
+        {
+            var userData = dataTable.CreateInstance<CSIONetMessagesListPayloadObject>();
+            return "<Request>\n" +
+                    "\t<CommandType>List</CommandType>\n" +
+                    "\t<SessionGUID>" + sessionGUID + "</SessionGUID>\n" +
+                    "\t<UserGUID>" + userGUID + "</UserGUID>\n" +
+                    "\t<FromDateTime>" + userData.FromDateTime + "</FromDateTime>\n" +
+                    "\t<ToDateTime>" + userData.ToDateTime + "</ToDateTime>\n" +
+                    "\t<Page>" + userData.Page + "</Page>\n" +
+                    "\t<PageSize>" + userData.PageSize + "</PageSize>\n" +
+                    "</Request>";
+        }
+
+        public static String getCSIONetRetrieveMessageXML(String sessionGUID, String userGUID, String messageGUID)
+        {
+            return "<Request>\n" +
+                    "    <CommandType>Retrieve</CommandType>\n" +
+                    "    <SessionGUID>" + sessionGUID + "</SessionGUID>\n" +
+                    "    <UserGUID>" + userGUID + "</UserGUID>\n" +
+                    "    <MessageGUID>" + messageGUID + "</MessageGUID>\n" +
+                    "    <Delete>0</Delete>\n" +
+                    "</Request>";
+        }
+
+        public static String getCSIONetLogoutXML(String sessionGUID)
+        {
+            return "<Request>\n" +
+                    "  <CommandType>SignOut</CommandType>\n" +
+                    "  <SessionGUID>" + sessionGUID + "</SessionGUID>\n" +
+                    "</Request>";
+        }
+
     }
 }

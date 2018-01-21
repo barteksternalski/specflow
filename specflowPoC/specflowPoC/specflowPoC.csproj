@@ -92,6 +92,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EnvironmentSetup\WebdriverSetup.cs" />
+    <Compile Include="Features\CSIONotificationAPI.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CSIONotificationAPI.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\IntegrationAPI.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -144,8 +149,11 @@
       <DependentUpon>SmokeTest.feature</DependentUpon>
     </Compile>
     <Compile Include="StepsDefinition\BaseSteps.cs" />
+    <Compile Include="StepsDefinition\CSIONotificationAPISteps.cs" />
     <Compile Include="StepsDefinition\GeneralSteps.cs" />
     <Compile Include="StepsDefinition\IntegrationAPISteps.cs" />
+    <Compile Include="TestDataObjects\CSIONetLoginPayloadObject.cs" />
+    <Compile Include="TestDataObjects\CSIONetMessagesListPayloadObject.cs" />
     <Compile Include="TestDataObjects\CustomerInfoFormObject.cs" />
     <Compile Include="TestDataObjects\CreateUserFormObject.cs" />
     <Compile Include="TestDataObjects\IntegrationAPIeSlipPaylodObject.cs" />
@@ -153,6 +161,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Features\CSIONotificationAPI.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CSIONotificationAPI.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\IntegrationAPI.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>IntegrationAPI.feature.cs</LastGenOutput>

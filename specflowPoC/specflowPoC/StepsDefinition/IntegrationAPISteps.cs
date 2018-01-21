@@ -37,7 +37,7 @@ namespace specflowPoC.StepsUI
         {
             RestRequest request = new RestRequest("api/integration/login", Method.POST);
             request.AddHeader("Accept", "application/xml");
-            request.AddParameter("application/xml", PayloadGenerator.getLoginXML(table), ParameterType.RequestBody);
+            request.AddParameter("application/xml", PayloadGenerator.getIntegrationAPILoginXML(table), ParameterType.RequestBody);
             response = client.Execute(request);
         }
 
