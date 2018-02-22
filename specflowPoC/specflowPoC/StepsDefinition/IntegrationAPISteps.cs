@@ -2,8 +2,9 @@
 using RestSharp;
 using TechTalk.SpecFlow;
 using specflowPoC.Helpers;
+using specflowPoC.TestDataObjects;
+using Newtonsoft.Json;
 using NUnit.Framework;
-using System.Xml.Linq;
 
 namespace specflowPoC.StepsUI
 {
@@ -12,68 +13,44 @@ namespace specflowPoC.StepsUI
     {
         static IRestClient client = new RestClient();
         static IRestResponse response;
-        static String token = "";
 
-        [Given(@"System API on '(.*)' environment is up and running")]
-        public void GivenSystemAPIIsUpAndRunning(string environemnt)
+        [Given(@"Application API is up and running")]
+        public void GivenApplicationAPIIsUpAndRunning()
         {
-            switch(environemnt)
-            {
-                case "DEV":
-                    client.BaseUrl = new Uri("http://cssitcacapi01-dev.azurewebsites.net");
-                    break;
-                case "SIT":
-                    client.BaseUrl = new Uri("http://cssitcacapi01.azurewebsites.net");
-                    break;
-                case "UAT":
-                    client.BaseUrl = new Uri("http://csuatcecapi01.azurewebsites.net");
-                    break;
-            }
-            
+            client.BaseUrl = new Uri("https://nice-unison-194320.appspot.com");
         }
 
-        [When(@"User sends sign in request with following data")]
-        public void WhenUserSendsSignInRequestWithFollowingData(Table table)
+        [When(@"User sends API request to calculate FIE parameters with following data")]
+        public void WhenUserSendsAPIRequestToCalculateFIEParametersWithFollowingData(Table table)
         {
-            RestRequest request = new RestRequest("api/integration/login", Method.POST);
-            request.AddHeader("Accept", "application/xml");
-            request.AddParameter("application/xml", PayloadGenerator.getIntegrationAPILoginXML(table), ParameterType.RequestBody);
+            RestRequest request = new RestRequest("/api/fie/calculate", Method.POST);
+            request.AddHeader("Accept", "application/json");
+            request.AddParameter("application/json", PayloadGenerator.getFIERequestPayload(table), ParameterType.RequestBody);
             response = client.Execute(request);
         }
 
-        [Then(@"Access token is sent back by the system")]
-        public void ThenAccessTokenIsSentBackByTheSystem()
+        [Then(@"FIE parameters are calculated")]
+        public void ThenFIEParametersAreCalculated()
         {
-            XDocument parsedResponse = XDocument.Parse(response.Content);
-            Assert.AreEqual("Success", parsedResponse.Element("Response").Element("Status").Value);
-            token = parsedResponse.Element("Response").Element("Token").Value;
+            FIEResponsePayloadObject results = JsonConvert.DeserializeObject<FIEResponsePayloadObject>(response.Content);
+            Assert.AreEqual("OK", response.StatusDescription);
         }
 
-        [Then(@"System responses with proper error '(.*)'")]
-        public void ThenSystemResponsesWithProperError(string message)
+        [When(@"User sends API request to calculate FIT parameters with following data")]
+        public void WhenUserSendsAPIRequestToCalculateFITParametersWithFollowingData(Table table)
         {
-            XDocument parsedResponse = XDocument.Parse(response.Content);
-            Assert.AreEqual("Error", parsedResponse.Element("Response").Element("Status").Value);
-            Assert.IsTrue(parsedResponse.Element("Response").Element("Message").Value.Contains(message));
-        }
-
-        [When(@"User sends eSlip creation request with following data")]
-        public void WhenUserSendsESlipCreationRequestWithFollowingData(Table table)
-        {
-            RestRequest request = new RestRequest("api/integration/eslip", Method.POST);
-            request.AddHeader("Authorization", "Bearer " + token);
-            request.AddHeader("Accept", "application/xml");
-            request.AddParameter("application/xml", PayloadGenerator.getESlipXML(table), ParameterType.RequestBody);
+            RestRequest request = new RestRequest("/api/fit/calculate", Method.POST);
+            request.AddHeader("Accept", "application/json");
+            request.AddParameter("application/json", PayloadGenerator.getFITRequestPayload(table), ParameterType.RequestBody);
             response = client.Execute(request);
         }
 
-        [Then(@"ESlip is properly created in the system")]
-        public void ThenESlipIsProperlyCreatedInTheSystem()
+        [Then(@"FIT parameters are calculated")]
+        public void ThenFITParametersAreCalculated()
         {
-            XDocument parsedResponse = XDocument.Parse(response.Content);
-            Assert.AreEqual("Success", parsedResponse.Element("eSlipRs").Element("MsgStatus").Element("MsgStatusCd").Value);
+            FITResponsePayloadObject results = JsonConvert.DeserializeObject<FITResponsePayloadObject>(response.Content);
+            Assert.AreEqual("OK", response.StatusDescription);
         }
-
 
     }
 }
