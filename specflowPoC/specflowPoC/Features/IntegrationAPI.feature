@@ -40,5 +40,19 @@
 	Then ESlip is properly created in the system
 
 	Examples:
-		| env | reqDate    | otherId   | brokerName | email                    | effDate    | expDate    | insuranceName     | lang | policyNo |
-		| DEV | 2018-01-20 | sitBroker | sitBroker  | b.sternalski@avanade.com | 2018-01-01 | 2018-10-31 | Awesome Infurance | EN   | PL102938 |
+		| env | reqDate    | otherId    | brokerName | email                    | effDate    | expDate    | insuranceName     | lang | policyNo |
+		| DEV | 2018-01-20 | sitBroker  | sitBroker  | b.sternalski@avanade.com | 2018-01-01 | 2018-10-31 | Awesome Insurance | EN   | PL102938 |
+		| DEV | 2018-10-10 | someBroker | someBroker | b.sternalski@avanade.com | 2010-10-10 | 2012-10-10 | Bad Insurance     | FR   | FR101010 |
+
+	@IntegrationAPI
+	Scenario Outline: 04. Verify unsuccessful eSlip request
+	Given System API on '<env>' environment is up and running
+	When User sends eSlip creation request with following data
+		| RequestDate | OtherID   | CommercialName | UserEmail | EffectiveDate | ExpirationDate | InsuranceCompName | Language | PolicyNumber |
+		| <reqDate>   | <otherId> | <brokerName>   | <email>   | <effDate>     | <expDate>      | <insuranceName>   | <lang>   | <policyNo>   |
+	Then System responses with proper error '<message>'
+
+	Examples:
+		| env | reqDate    | otherId    | brokerName | email                    | effDate    | expDate    | insuranceName     | lang | policyNo | message |
+		| DEV | 2018-01-20 | sitBroker  | sitBroker  | b.sternalski@avanade.com | 2018-01-01 | 2018-10-31 | Awesome Insurance | EN   | PL102938 | ...     |
+		| DEV | 2018-10-10 | someBroker | someBroker | b.sternalski@avanade.com | 2010-10-10 | 2012-10-10 | Bad Insurance     | FR   | FR101010 | ...     |

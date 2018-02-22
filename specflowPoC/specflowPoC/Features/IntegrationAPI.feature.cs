@@ -140,7 +140,8 @@ namespace specflowPoC.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("03. Verify successful eSlip request")]
         [NUnit.Framework.CategoryAttribute("IntegrationAPI")]
-        [NUnit.Framework.TestCaseAttribute("DEV", "2018-01-20", "sitBroker", "sitBroker", "b.sternalski@avanade.com", "2018-01-01", "2018-10-31", "Awesome Infurance", "EN", "PL102938", null)]
+        [NUnit.Framework.TestCaseAttribute("DEV", "2018-01-20", "sitBroker", "sitBroker", "b.sternalski@avanade.com", "2018-01-01", "2018-10-31", "Awesome Insurance", "EN", "PL102938", null)]
+        [NUnit.Framework.TestCaseAttribute("DEV", "2018-10-10", "someBroker", "someBroker", "b.sternalski@avanade.com", "2010-10-10", "2012-10-10", "Bad Insurance", "FR", "FR101010", null)]
         public virtual void _03_VerifySuccessfulESlipRequest(string env, string reqDate, string otherId, string brokerName, string email, string effDate, string expDate, string insuranceName, string lang, string policyNo, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -179,6 +180,53 @@ namespace specflowPoC.Features
  testRunner.When("User sends eSlip creation request with following data", ((string)(null)), table3, "When ");
 #line 40
  testRunner.Then("ESlip is properly created in the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("04. Verify unsuccessful eSlip request")]
+        [NUnit.Framework.CategoryAttribute("IntegrationAPI")]
+        [NUnit.Framework.TestCaseAttribute("DEV", "2018-01-20", "sitBroker", "sitBroker", "b.sternalski@avanade.com", "2018-01-01", "2018-10-31", "Awesome Insurance", "EN", "PL102938", "...", null)]
+        [NUnit.Framework.TestCaseAttribute("DEV", "2018-10-10", "someBroker", "someBroker", "b.sternalski@avanade.com", "2010-10-10", "2012-10-10", "Bad Insurance", "FR", "FR101010", "...", null)]
+        public virtual void _04_VerifyUnsuccessfulESlipRequest(string env, string reqDate, string otherId, string brokerName, string email, string effDate, string expDate, string insuranceName, string lang, string policyNo, string message, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "IntegrationAPI"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("04. Verify unsuccessful eSlip request", @__tags);
+#line 48
+ this.ScenarioSetup(scenarioInfo);
+#line 49
+ testRunner.Given(string.Format("System API on \'{0}\' environment is up and running", env), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "RequestDate",
+                        "OtherID",
+                        "CommercialName",
+                        "UserEmail",
+                        "EffectiveDate",
+                        "ExpirationDate",
+                        "InsuranceCompName",
+                        "Language",
+                        "PolicyNumber"});
+            table4.AddRow(new string[] {
+                        string.Format("{0}", reqDate),
+                        string.Format("{0}", otherId),
+                        string.Format("{0}", brokerName),
+                        string.Format("{0}", email),
+                        string.Format("{0}", effDate),
+                        string.Format("{0}", expDate),
+                        string.Format("{0}", insuranceName),
+                        string.Format("{0}", lang),
+                        string.Format("{0}", policyNo)});
+#line 50
+ testRunner.When("User sends eSlip creation request with following data", ((string)(null)), table4, "When ");
+#line 53
+ testRunner.Then(string.Format("System responses with proper error \'{0}\'", message), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
