@@ -7,15 +7,15 @@
 
     public class FITInput
     {
-        public int waterFlowRate { get; set; }
-        public int gasFlowRate { get; set; }
-        public int oilFlowRate { get; set; }
-        public int mainPipeOutsideDiameter { get; set; }
-        public int mainPipeInsideDiameter { get; set; }
-        public int mainPipeSpanLength { get; set; }
-        public int waterDensity { get; set; }
-        public int gasDensity { get; set; }
-        public int oilDensity { get; set; }
-        public int gasViscosity { get; set; }
+        public double waterFlowRate { get; set; }
+        public double gasFlowRate { get; set; }
+        public double oilFlowRate { get; set; }
+        public double mainPipeOutsideDiameter { get; set; }
+        public double mainPipeInsideDiameter { get; set; }
+        public double mainPipeSpanLength { get; set; }
+        public double waterDensity { get; set; }
+        public double gasDensity { get; set; }
+        public double oilDensity { get; set; }
+        public double gasViscosity { get; set; }
     }
 }

@@ -7,16 +7,16 @@
 
     public class FIEInput
     {
-        public int insideDiameter { get; set; }
-        public int length { get; set; }
-        public int waterFlowRate { get; set; }
-        public int gasFlowRate { get; set; }
-        public int oilFlowRate { get; set; }
-        public int waterDensity { get; set; }
-        public int gasDensity { get; set; }
-        public int oilDensity { get; set; }
-        public int mainBranchID { get; set; }
-        public int gasViscosity { get; set; }
-        public int speedOfSound { get; set; }
+        public double insideDiameter { get; set; }
+        public double length { get; set; }
+        public double waterFlowRate { get; set; }
+        public double gasFlowRate { get; set; }
+        public double oilFlowRate { get; set; }
+        public double waterDensity { get; set; }
+        public double gasDensity { get; set; }
+        public double oilDensity { get; set; }
+        public double mainBranchID { get; set; }
+        public double gasViscosity { get; set; }
+        public double speedOfSound { get; set; }
     }
 }

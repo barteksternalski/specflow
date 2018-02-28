@@ -64,11 +64,18 @@ namespace specflowPoC.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("01. Verify simple user Flow Induced Excitation calculation")]
+        [NUnit.Framework.DescriptionAttribute("01. Verify simple user Flow Induced Excitation successful calculation")]
         [NUnit.Framework.TestCaseAttribute("1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", null)]
-        public virtual void _01_VerifySimpleUserFlowInducedExcitationCalculation(string insDiam, string len, string waterFR, string gasFR, string oilFR, string waterDen, string gasDen, string oilDen, string branchID, string gasVis, string soundSpeed, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", null)]
+        [NUnit.Framework.TestCaseAttribute("-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", null)]
+        [NUnit.Framework.TestCaseAttribute("136", "5", "0.001", "0.152", "0", "977", "286", "601", "12", "1", "3800000", null)]
+        [NUnit.Framework.TestCaseAttribute("136", "5", "0.001", "0.153", "0", "977", "285", "601", "12", "1", "3800000", null)]
+        [NUnit.Framework.TestCaseAttribute("136", "10", "0.001", "0.153", "0", "977", "280", "601", "12", "1", "3800000", null)]
+        [NUnit.Framework.TestCaseAttribute("136", "10", "0.001", "0.153", "0", "977", "280", "601", "12", "1", "3800000", null)]
+        [NUnit.Framework.TestCaseAttribute("50", "45", "0.09", "0.15", "0.015", "794", "1500", "1500", "20", "1.5", "4200000", null)]
+        public virtual void _01_VerifySimpleUserFlowInducedExcitationSuccessfulCalculation(string insDiam, string len, string waterFR, string gasFR, string oilFR, string waterDen, string gasDen, string oilDen, string branchID, string gasVis, string soundSpeed, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01. Verify simple user Flow Induced Excitation calculation", exampleTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01. Verify simple user Flow Induced Excitation successful calculation", exampleTags);
 #line 4
  this.ScenarioSetup(scenarioInfo);
 #line 5
@@ -107,14 +114,22 @@ namespace specflowPoC.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("02. Verify simple user Flow Induced Turbulence calculation")]
+        [NUnit.Framework.DescriptionAttribute("02. Verify simple user Flow Induced Turbulence successful calculation")]
         [NUnit.Framework.TestCaseAttribute("1", "1", "1", "1", "1", "1", "1", "1", "1", "1", null)]
-        public virtual void _02_VerifySimpleUserFlowInducedTurbulenceCalculation(string waterFR, string gasFR, string oilFR, string pipeOutsideDiam, string pipeInsideDiam, string pipeLength, string waterDen, string gasDen, string oilDen, string gasVis, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("0", "0", "0", "0", "0", "0", "0", "0", "0", "0", null)]
+        [NUnit.Framework.TestCaseAttribute("-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", null)]
+        [NUnit.Framework.TestCaseAttribute("0.001", "0.152", "0", "219", "136", "5", "977", "286", "601", "3", null)]
+        [NUnit.Framework.TestCaseAttribute("0.001", "0.162", "0", "219", "136", "5", "977", "276", "601", "3", null)]
+        [NUnit.Framework.TestCaseAttribute("0.001", "0.172", "0", "219", "136", "5", "977", "266", "601", "3", null)]
+        [NUnit.Framework.TestCaseAttribute("0.001", "0.182", "0", "219", "136", "5", "977", "256", "601", "3", null)]
+        [NUnit.Framework.TestCaseAttribute("0.001", "0.192", "0", "219", "136", "5", "977", "246", "601", "3", null)]
+        [NUnit.Framework.TestCaseAttribute("0.001", "0.200", "0", "94", "12", "1000", "977", "246", "601", "3", null)]
+        public virtual void _02_VerifySimpleUserFlowInducedTurbulenceSuccessfulCalculation(string waterFR, string gasFR, string oilFR, string pipeOutsideDiam, string pipeInsideDiam, string pipeLength, string waterDen, string gasDen, string oilDen, string gasVis, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("02. Verify simple user Flow Induced Turbulence calculation", exampleTags);
-#line 15
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("02. Verify simple user Flow Induced Turbulence successful calculation", exampleTags);
+#line 22
  this.ScenarioSetup(scenarioInfo);
-#line 16
+#line 23
   testRunner.Given("Application API is up and running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -139,9 +154,9 @@ namespace specflowPoC.Features
                         string.Format("{0}", gasDen),
                         string.Format("{0}", oilDen),
                         string.Format("{0}", gasVis)});
-#line 17
+#line 24
   testRunner.When("User sends API request to calculate FIT parameters with following data", ((string)(null)), table2, "When ");
-#line 20
+#line 27
   testRunner.Then("FIT parameters are calculated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

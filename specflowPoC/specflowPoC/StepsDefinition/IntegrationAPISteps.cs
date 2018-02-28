@@ -5,6 +5,7 @@ using specflowPoC.Helpers;
 using specflowPoC.TestDataObjects;
 using Newtonsoft.Json;
 using NUnit.Framework;
+using System.Net;
 
 namespace specflowPoC.StepsUI
 {
@@ -33,7 +34,8 @@ namespace specflowPoC.StepsUI
         public void ThenFIEParametersAreCalculated()
         {
             FIEResponsePayloadObject results = JsonConvert.DeserializeObject<FIEResponsePayloadObject>(response.Content);
-            Assert.AreEqual("OK", response.StatusDescription);
+            Console.WriteLine("LoF: " + results.result.likelihoodOfFailure);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode, "Response message: " + response.Content);
         }
 
         [When(@"User sends API request to calculate FIT parameters with following data")]
@@ -49,7 +51,8 @@ namespace specflowPoC.StepsUI
         public void ThenFITParametersAreCalculated()
         {
             FITResponsePayloadObject results = JsonConvert.DeserializeObject<FITResponsePayloadObject>(response.Content);
-            Assert.AreEqual("OK", response.StatusDescription);
+            Console.WriteLine("LoF: " + results.result.likelihoodOfFailure);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
 
     }
