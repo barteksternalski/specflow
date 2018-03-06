@@ -70,48 +70,6 @@ namespace specflowPoC.Pages
             }
         }
 
-        public void CreateNewUser(Table dataTable, String userId)
-        {
-
-            var userData = dataTable.CreateInstance<CreateUserFormObject>();
-
-            if (!userData.UserType.Equals("{null}")) SelectUserType(userData.UserType);
-            if (!userData.UserId.Equals("{null}")) getElement(By.Id(CreateUserLocators.ID_userIdInputField)).SendKeys(userId);
-            if (!userData.UserName.Equals("{null}")) getElement(By.Id(CreateUserLocators.ID_nameInputField)).SendKeys(userData.UserName);
-            if (!userData.Email.Equals("{null}")) getElement(By.Id(CreateUserLocators.ID_emailInputField)).SendKeys(userData.Email);
-            if (!userData.OrganizationId.Equals("{null}")) getElement(By.Id(CreateUserLocators.ID_organizationUserIdInputField)).SendKeys(userData.OrganizationId);
-            if (!userData.OrganizationType.Equals("{null}")) SelectOrganizationType(userData.OrganizationType);
-            if (!userData.CsioNetId.Equals("{null}")) getElement(By.Id(CreateUserLocators.ID_csioNetIdInputField)).SendKeys(userData.CsioNetId);
-            if (!userData.Carrier.Equals("{null}"))
-            {
-                getElement(By.Id(CreateUserLocators.ID_carrierOrganizationDropdown)).Click();
-                foreach (IWebElement option in getElements(By.XPath(CreateUserLocators.XPATH_dropdownOptions)))
-                {
-                    if (option.Text.Equals(userData.Carrier))
-                    {
-                        option.Click();
-                        break;
-                    }
-                }
-            } else Console.WriteLine("INFO: Field \"Carrier Organization\" set to NULL value");
-            if (!userData.Broker.Equals("{null}"))
-            {
-                getElement(By.Id(CreateUserLocators.ID_brokerageOrganizationDropdown)).Click();
-                foreach (IWebElement option in getElements(By.XPath(CreateUserLocators.XPATH_dropdownOptions)))
-                {
-                    if (option.Text.Equals(userData.Broker))
-                    {
-                        option.Click();
-                        break;
-                    }
-                }
-            }
-            else Console.WriteLine("INFO: Field \"Brokerage Organization\" set to NULL value");
-            if (!userData.Modules.Equals("{null}")) SelectModules(userData.Modules);
-
-            getElement(By.XPath(CreateUserLocators.XPATH_saveButton)).Click();
-            System.Threading.Thread.Sleep(1000);
-        }
-
+        
     }
 }

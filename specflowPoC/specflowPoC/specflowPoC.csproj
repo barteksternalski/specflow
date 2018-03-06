@@ -111,11 +111,15 @@
     <Compile Include="StepsDefinition\BaseSteps.cs" />
     <Compile Include="StepsDefinition\GeneralSteps.cs" />
     <Compile Include="StepsDefinition\IntegrationAPISteps.cs" />
-    <Compile Include="TestDataObjects\CreateUserFormObject.cs" />
+    <Compile Include="TestDataObjects\CreateProjectRequestPayloadObject.cs" />
+    <Compile Include="TestDataObjects\CreateProjectResponsePayloadObject.cs" />
     <Compile Include="TestDataObjects\FIERequestPayloadObject.cs" />
     <Compile Include="TestDataObjects\FIEResponsePayloadObject.cs" />
     <Compile Include="TestDataObjects\FITRequestPayloadObject.cs" />
     <Compile Include="TestDataObjects\FITResponsePayloadObject.cs" />
+    <Compile Include="TestDataObjects\AspectsDetailsObject.cs" />
+    <Compile Include="TestDataObjects\GetListOfProjectsObject.cs" />
+    <Compile Include="TestDataObjects\GetSingleProjecDetailsObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

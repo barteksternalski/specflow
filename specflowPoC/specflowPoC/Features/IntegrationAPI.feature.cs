@@ -161,6 +161,148 @@ namespace specflowPoC.Features
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("03. User is able to create new project")]
+        [NUnit.Framework.TestCaseAttribute("0", "apiTest1", "some description", "10", "2", "2", null)]
+        public virtual void _03_UserIsAbleToCreateNewProject(string pvtDataId, string name, string desc, string caseNo, string noOfEquip, string noOfSubEquip, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("03. User is able to create new project", exampleTags);
+#line 41
+ this.ScenarioSetup(scenarioInfo);
+#line 42
+  testRunner.Given("Application API is up and running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "pvtDataId",
+                        "name",
+                        "description",
+                        "numberOfCases",
+                        "equipments",
+                        "subEquipments"});
+            table3.AddRow(new string[] {
+                        string.Format("{0}", pvtDataId),
+                        string.Format("{0}", name),
+                        string.Format("{0}", desc),
+                        string.Format("{0}", caseNo),
+                        string.Format("{0}", noOfEquip),
+                        string.Format("{0}", noOfSubEquip)});
+#line 43
+  testRunner.When("User creates project with given data", ((string)(null)), table3, "When ");
+#line 46
+  testRunner.Then("Project is created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("04. User is able to get list of created projects")]
+        public virtual void _04_UserIsAbleToGetListOfCreatedProjects()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("04. User is able to get list of created projects", ((string[])(null)));
+#line 52
+ this.ScenarioSetup(scenarioInfo);
+#line 53
+  testRunner.Given("Application API is up and running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 54
+  testRunner.When("User sends API request to get list of created projects", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 55
+  testRunner.Then("List of projects is returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("05. User is able to get details of given project")]
+        public virtual void _05_UserIsAbleToGetDetailsOfGivenProject()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("05. User is able to get details of given project", ((string[])(null)));
+#line 57
+ this.ScenarioSetup(scenarioInfo);
+#line 58
+  testRunner.Given("Application API is up and running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 59
+  testRunner.When("User sends API request to get project details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 60
+  testRunner.Then("Project details are returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("06. User is able to update aspects details of given project")]
+        [NUnit.Framework.TestCaseAttribute("1000", "module should be checked", "false", "", "false", "", "false", "", "false", "", null)]
+        public virtual void _06_UserIsAbleToUpdateAspectsDetailsOfGivenProject(string maxKinEnergy, string maxKinComment, string mod27, string mod27_Comment, string mod29, string mod29_Comment, string mod28, string mod28_Comment, string mod4, string mod4_Comment, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("06. User is able to update aspects details of given project", exampleTags);
+#line 62
+ this.ScenarioSetup(scenarioInfo);
+#line 63
+  testRunner.Given("Application API is up and running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "maxKineticEnergy",
+                        "maxKineticEnergyComment",
+                        "module2_7Enabled",
+                        "module2_7Comment",
+                        "module2_9Enabled",
+                        "module2_9Comment",
+                        "module2_8Enabled",
+                        "module2_8Comment",
+                        "module4Enabled",
+                        "module4Comment"});
+            table4.AddRow(new string[] {
+                        string.Format("{0}", maxKinEnergy),
+                        string.Format("{0}", maxKinComment),
+                        string.Format("{0}", mod27),
+                        string.Format("{0}", mod27_Comment),
+                        string.Format("{0}", mod29),
+                        string.Format("{0}", mod29_Comment),
+                        string.Format("{0}", mod28),
+                        string.Format("{0}", mod28_Comment),
+                        string.Format("{0}", mod4),
+                        string.Format("{0}", mod4_Comment)});
+#line 64
+  testRunner.When("User send API request to update aspects details of given project", ((string)(null)), table4, "When ");
+#line 67
+  testRunner.Then("Aspects details are updated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("07. User is able to get aspects details of given project")]
+        public virtual void _07_UserIsAbleToGetAspectsDetailsOfGivenProject()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("07. User is able to get aspects details of given project", ((string[])(null)));
+#line 73
+ this.ScenarioSetup(scenarioInfo);
+#line 74
+  testRunner.Given("Application API is up and running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 75
+  testRunner.When("User send API request to get aspects details of given project", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 76
+  testRunner.Then("Aspects details are returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("08. User is able to delete given project")]
+        public virtual void _08_UserIsAbleToDeleteGivenProject()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("08. User is able to delete given project", ((string[])(null)));
+#line 78
+ this.ScenarioSetup(scenarioInfo);
+#line 79
+  testRunner.Given("Application API is up and running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 80
+  testRunner.When("User sends API request to delete given project", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 81
+  testRunner.Then("Project is deleted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
