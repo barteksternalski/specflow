@@ -6,6 +6,8 @@ using specflowPoC.TestDataObjects;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System.Net;
+using System.IO;
+using System.Reflection;
 
 namespace specflowPoC.StepsUI
 {
@@ -70,7 +72,6 @@ namespace specflowPoC.StepsUI
             GetListOfProjectsObject projectsList = JsonConvert.DeserializeObject<GetListOfProjectsObject>(response.Content);
             Console.WriteLine("No of projects: " + projectsList.projects.Count);
             Assert.GreaterOrEqual(projectsList.projects.Count, 1);
-            projectId = projectsList.projects[projectsList.projects.Count - 1].id;
         }
 
         [When(@"User sends API request to get project details")]
@@ -89,6 +90,14 @@ namespace specflowPoC.StepsUI
             Assert.NotNull(projectDetails.project.name);
         }
 
+        [Then(@"Project has (.*) added equipments")]
+        public void ThenProjectHasAddedEquipments(int equipmentCount)
+        {
+            GetSingleProjecDetailsObject projectDetails = JsonConvert.DeserializeObject<GetSingleProjecDetailsObject>(response.Content);
+            Assert.Equals(projectDetails.project.equipments.Count, equipmentCount);
+        }
+
+
         [When(@"User creates project with given data")]
         public void WhenUserCreatesProjectWithGivenData(Table table)
         {
@@ -103,6 +112,7 @@ namespace specflowPoC.StepsUI
         {
             CreateProjectResponsePayloadObject newProjectInfo = JsonConvert.DeserializeObject<CreateProjectResponsePayloadObject>(response.Content);
             Console.WriteLine("Project id: " + newProjectInfo.id);
+            projectId = newProjectInfo.id;
             Assert.NotNull(newProjectInfo.id);
         }
 
@@ -114,12 +124,11 @@ namespace specflowPoC.StepsUI
             response = client.Execute(request);
         }
 
-        [Then(@"Aspects details are returned")]
-        public void ThenAspectsDetailsAreReturned()
+        [Then(@"Aspects details are returned with Max kinetic energy set to (.*)")]
+        public void ThenAspectsDetailsAreReturnedWithMaxKineticEnergySetTo(double maxKinEnergyValue)
         {
             AspectsDetailsObject aspectsDetails = JsonConvert.DeserializeObject<AspectsDetailsObject>(response.Content);
-            Console.WriteLine("Max kinetic enegry: " + aspectsDetails.aspects.maxKineticEnergy);
-            Assert.IsFalse(aspectsDetails.aspects.module2_7Enabled);
+            Assert.AreEqual(maxKinEnergyValue, aspectsDetails.aspects.maxKineticEnergy);
         }
 
         [When(@"User send API request to update aspects details of given project")]
@@ -149,6 +158,27 @@ namespace specflowPoC.StepsUI
         public void ThenProjectIsDeleted()
         {
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        }
+        [When(@"User sends API request to upload (.*) file")]
+        public void WhenUserSendsAPIRequestToUploadPVTFile(String fileName)
+        {
+            RestRequest request = new RestRequest("/api/pvt/upload", Method.POST);
+            request.AddHeader("Accept", "application/json");
+            request.AddFile("file", Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"..\..\TestFiles\" + fileName));
+            response = client.Execute(request);
+        }
+
+        [Then(@"File is uploaded")]
+        public void ThenFileIsUploaded()
+        {
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        [Then(@"Proper error message (.+) is returned")]
+        public void ThenProperErrorMessageInvalidPVTFileFormat_IsReturned(String errorMessage)
+        {
+            GeneralErrorHandlingObject error = JsonConvert.DeserializeObject<GeneralErrorHandlingObject>(response.Content);
+            Assert.AreEqual(errorMessage, error.message);
         }
 
     }

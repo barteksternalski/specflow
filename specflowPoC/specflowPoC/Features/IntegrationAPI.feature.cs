@@ -225,6 +225,8 @@ namespace specflowPoC.Features
   testRunner.When("User sends API request to get project details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 60
   testRunner.Then("Project details are returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 61
+  testRunner.Then("Project has 2 added equipments", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -235,9 +237,9 @@ namespace specflowPoC.Features
         public virtual void _06_UserIsAbleToUpdateAspectsDetailsOfGivenProject(string maxKinEnergy, string maxKinComment, string mod27, string mod27_Comment, string mod29, string mod29_Comment, string mod28, string mod28_Comment, string mod4, string mod4_Comment, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("06. User is able to update aspects details of given project", exampleTags);
-#line 62
- this.ScenarioSetup(scenarioInfo);
 #line 63
+ this.ScenarioSetup(scenarioInfo);
+#line 64
   testRunner.Given("Application API is up and running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -262,9 +264,9 @@ namespace specflowPoC.Features
                         string.Format("{0}", mod28_Comment),
                         string.Format("{0}", mod4),
                         string.Format("{0}", mod4_Comment)});
-#line 64
+#line 65
   testRunner.When("User send API request to update aspects details of given project", ((string)(null)), table4, "When ");
-#line 67
+#line 68
   testRunner.Then("Aspects details are updated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -275,14 +277,14 @@ namespace specflowPoC.Features
         public virtual void _07_UserIsAbleToGetAspectsDetailsOfGivenProject()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("07. User is able to get aspects details of given project", ((string[])(null)));
-#line 73
- this.ScenarioSetup(scenarioInfo);
 #line 74
-  testRunner.Given("Application API is up and running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ this.ScenarioSetup(scenarioInfo);
 #line 75
-  testRunner.When("User send API request to get aspects details of given project", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+  testRunner.Given("Application API is up and running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 76
-  testRunner.Then("Aspects details are returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.When("User send API request to get aspects details of given project", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 77
+  testRunner.Then("Aspects details are returned with Max kinetic energy set to 1000.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -292,14 +294,50 @@ namespace specflowPoC.Features
         public virtual void _08_UserIsAbleToDeleteGivenProject()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("08. User is able to delete given project", ((string[])(null)));
-#line 78
- this.ScenarioSetup(scenarioInfo);
 #line 79
-  testRunner.Given("Application API is up and running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ this.ScenarioSetup(scenarioInfo);
 #line 80
-  testRunner.When("User sends API request to delete given project", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+  testRunner.Given("Application API is up and running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 81
+  testRunner.When("User sends API request to delete given project", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 82
   testRunner.Then("Project is deleted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("09. Wrong file upload verification")]
+        [NUnit.Framework.TestCaseAttribute("alpaca26kb.jpg", "Invalid PVT file format.", null)]
+        public virtual void _09_WrongFileUploadVerification(string fileName, string message, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("09. Wrong file upload verification", exampleTags);
+#line 84
+ this.ScenarioSetup(scenarioInfo);
+#line 85
+  testRunner.Given("Application API is up and running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 86
+  testRunner.When(string.Format("User sends API request to upload {0} file", fileName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 87
+  testRunner.Then(string.Format("Proper error message {0} is returned", message), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("10. User is able to upload PVT file")]
+        [NUnit.Framework.TestCaseAttribute("PVT_correct.tab", null)]
+        public virtual void _10_UserIsAbleToUploadPVTFile(string fileName, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("10. User is able to upload PVT file", exampleTags);
+#line 93
+ this.ScenarioSetup(scenarioInfo);
+#line 94
+  testRunner.Given("Application API is up and running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 95
+  testRunner.When(string.Format("User sends API request to upload {0} file", fileName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 96
+  testRunner.Then("File is uploaded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

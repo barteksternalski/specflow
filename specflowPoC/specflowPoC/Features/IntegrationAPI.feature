@@ -58,6 +58,7 @@
 		Given Application API is up and running
 		When User sends API request to get project details
 		Then Project details are returned
+		Then Project has 2 added equipments
 
 	Scenario Outline: 06. User is able to update aspects details of given project
 		Given Application API is up and running
@@ -73,9 +74,27 @@
 	Scenario: 07. User is able to get aspects details of given project
 		Given Application API is up and running
 		When User send API request to get aspects details of given project
-		Then Aspects details are returned
+		Then Aspects details are returned with Max kinetic energy set to 1000.0
 
 	Scenario: 08. User is able to delete given project
 		Given Application API is up and running
 		When User sends API request to delete given project
 		Then Project is deleted
+
+	Scenario Outline: 09. Wrong file upload verification
+		Given Application API is up and running
+		When User sends API request to upload <fileName> file
+		Then Proper error message <message> is returned
+
+		Examples:
+			| fileName       | message                  |
+			| alpaca26kb.jpg | Invalid PVT file format. |
+
+	Scenario Outline: 10. User is able to upload PVT file
+		Given Application API is up and running
+		When User sends API request to upload <fileName> file
+		Then File is uploaded
+
+		Examples:
+			| fileName        |
+			| PVT_correct.tab |
