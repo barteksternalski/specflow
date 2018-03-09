@@ -326,7 +326,7 @@ namespace specflowPoC.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("10. User is able to upload PVT file")]
-        [NUnit.Framework.TestCaseAttribute("PVT_correct.tab", null)]
+        [NUnit.Framework.TestCaseAttribute("PVT_correctSmall.tab", null)]
         public virtual void _10_UserIsAbleToUploadPVTFile(string fileName, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("10. User is able to upload PVT file", exampleTags);
@@ -338,6 +338,23 @@ namespace specflowPoC.Features
   testRunner.When(string.Format("User sends API request to upload {0} file", fileName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 96
   testRunner.Then("File is uploaded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("11. User is able to delete uploaded PVT file")]
+        public virtual void _11_UserIsAbleToDeleteUploadedPVTFile()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("11. User is able to delete uploaded PVT file", ((string[])(null)));
+#line 102
+ this.ScenarioSetup(scenarioInfo);
+#line 103
+  testRunner.Given("Application API is up and running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 104
+  testRunner.When("User sends API request to delete uploaded PVT file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 105
+  testRunner.Then("PVT file is deleted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

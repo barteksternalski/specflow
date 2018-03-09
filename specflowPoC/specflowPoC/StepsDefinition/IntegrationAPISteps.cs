@@ -16,7 +16,8 @@ namespace specflowPoC.StepsUI
     {
         static IRestClient client = new RestClient();
         static IRestResponse response;
-        static Int64 projectId = 0;
+        static long projectId = 0;
+        static long pvtFileId = 0;
 
         [Given(@"Application API is up and running")]
         public void GivenApplicationAPIIsUpAndRunning()
@@ -171,6 +172,9 @@ namespace specflowPoC.StepsUI
         [Then(@"File is uploaded")]
         public void ThenFileIsUploaded()
         {
+            PVTFileObject pvtFile = JsonConvert.DeserializeObject<PVTFileObject>(response.Content);
+            Console.WriteLine("PVT file id: " + pvtFile.pvtDataId);
+            projectId = pvtFile.pvtDataId;
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
 
@@ -179,6 +183,21 @@ namespace specflowPoC.StepsUI
         {
             GeneralErrorHandlingObject error = JsonConvert.DeserializeObject<GeneralErrorHandlingObject>(response.Content);
             Assert.AreEqual(errorMessage, error.message);
+        }
+
+        [When(@"User sends API request to delete uploaded PVT file")]
+        public void WhenUserSendsAPIRequestToDeleteUploadedPVTFile()
+        {
+            RestRequest request = new RestRequest("/api/pvt/delete", Method.DELETE);
+            request.AddHeader("Accept", "application/json");
+            request.AddParameter("application/json", PayloadGenerator.getDeletePVTFilePayload(5740087962763264), ParameterType.RequestBody);
+            response = client.Execute(request);
+        }
+
+        [Then(@"PVT file is deleted")]
+        public void ThenPVTFileIsDeleted()
+        {
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
 
     }

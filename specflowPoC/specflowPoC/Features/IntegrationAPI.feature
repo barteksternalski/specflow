@@ -96,5 +96,10 @@
 		Then File is uploaded
 
 		Examples:
-			| fileName        |
-			| PVT_correct.tab |
+			| fileName             |
+			| PVT_correctSmall.tab |
+
+	Scenario: 11. User is able to delete uploaded PVT file
+		Given Application API is up and running
+		When User sends API request to delete uploaded PVT file
+		Then PVT file is deleted

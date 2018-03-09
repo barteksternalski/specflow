@@ -132,6 +132,8 @@
     <None Include="info.json" />
     <None Include="packages.config" />
     <None Include="TestFiles\PVT_correct.tab" />
+    <None Include="TestFiles\PVT_correctSmall.tab" />
+    <None Include="TestFiles\PVT_incorrect.tab" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
@@ -144,6 +146,7 @@
     <Content Include="Drivers\MicrosoftWebDriver.exe" />
     <Content Include="TestFiles\alpaca26kb.jpg" />
     <Content Include="TestFiles\alpaca5mb.jpg" />
+    <Content Include="TestFiles\omg.gif" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Locators\CreateUserLocators.resx">

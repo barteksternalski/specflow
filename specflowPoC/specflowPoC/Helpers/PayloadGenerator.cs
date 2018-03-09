@@ -59,5 +59,13 @@ namespace specflowPoC.Helpers
             return JsonConvert.SerializeObject(payload);
         }
 
+        public static String getDeletePVTFilePayload(long pvtFileId)
+        {
+            PVTFileObject pvtFile = new PVTFileObject();
+            pvtFile.pvtDataId = pvtFileId;
+            return JsonConvert.SerializeObject(pvtFile);
+        }
+
+
     }
 }
