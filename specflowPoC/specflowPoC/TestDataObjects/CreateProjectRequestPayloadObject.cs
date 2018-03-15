@@ -7,24 +7,24 @@ namespace specflowPoC.TestDataObjects
         public NewProject project { get; set; }
     }
 
+    public class NewSubEquipment
+    {
+        public string name { get; set; }
+    }
+
+    public class NewEquipment
+    {
+        public string name { get; set; }
+        public List<NewSubEquipment> subEquipment { get; set; }
+    }
+
     public class NewProject
     {
         public int pvtDataId { get; set; }
         public string name { get; set; }
         public string description { get; set; }
         public int numberOfCases { get; set; }
-        public List<CreateEquipment> equipments { get; set; }
-    }
-
-    public class CreateEquipment
-    {
-        public string name { get; set; }
-        public List<CreateSubEquipment> subEquipments { get; set; }
-    }
-
-    public class CreateSubEquipment
-    {
-        public string name { get; set; }
+        public List<NewEquipment> equipment { get; set; }
     }
 
     public class CreateProjectPlaceholder

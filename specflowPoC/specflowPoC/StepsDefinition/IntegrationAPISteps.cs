@@ -18,6 +18,7 @@ namespace specflowPoC.StepsUI
         static IRestResponse response;
         static long projectId = 0;
         static long pvtFileId = 0;
+        static string equipmentId = "";
 
         [Given(@"Application API is up and running")]
         public void GivenApplicationAPIIsUpAndRunning()
@@ -95,7 +96,8 @@ namespace specflowPoC.StepsUI
         public void ThenProjectHasAddedEquipments(int equipmentCount)
         {
             GetSingleProjecDetailsObject projectDetails = JsonConvert.DeserializeObject<GetSingleProjecDetailsObject>(response.Content);
-            Assert.Equals(projectDetails.project.equipments.Count, equipmentCount);
+            equipmentId = projectDetails.project.equipment[0].subEquipment[0].id;
+            Assert.AreEqual(projectDetails.project.equipment.Count, equipmentCount);
         }
 
 
@@ -174,7 +176,7 @@ namespace specflowPoC.StepsUI
         {
             PVTFileObject pvtFile = JsonConvert.DeserializeObject<PVTFileObject>(response.Content);
             Console.WriteLine("PVT file id: " + pvtFile.pvtDataId);
-            projectId = pvtFile.pvtDataId;
+            pvtFileId = pvtFile.pvtDataId;
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
 
@@ -190,7 +192,7 @@ namespace specflowPoC.StepsUI
         {
             RestRequest request = new RestRequest("/api/pvt/delete", Method.DELETE);
             request.AddHeader("Accept", "application/json");
-            request.AddParameter("application/json", PayloadGenerator.getDeletePVTFilePayload(5740087962763264), ParameterType.RequestBody);
+            request.AddParameter("application/json", PayloadGenerator.getDeletePVTFilePayload(pvtFileId), ParameterType.RequestBody);
             response = client.Execute(request);
         }
 
@@ -199,6 +201,38 @@ namespace specflowPoC.StepsUI
         {
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
+
+        [When(@"User sends API request to get precalc info")]
+        public void WhenUserSendsAPIRequestToGetPrecalcInfo()
+        {
+            RestRequest request = new RestRequest("/api/project/" + projectId.ToString() + "/precalc/" + equipmentId, Method.GET);
+            request.AddHeader("Accept", "application/json");
+            response = client.Execute(request);
+        }
+
+        [Then(@"Precalc info is returned")]
+        public void ThenPrecalcInfoIsReturned()
+        {
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        [When(@"User send API request to update precalc info with given data")]
+        public void WhenUserSendAPIRequestToUpdatePrecalcInfoWithGivenData(Table table)
+        {
+            PrecalcDetailsObject _precalc = JsonConvert.DeserializeObject<PrecalcDetailsObject>(response.Content);
+
+            RestRequest request = new RestRequest("/api/project/" + projectId.ToString() + "/precalc/" + equipmentId, Method.PUT);
+            request.AddHeader("Accept", "application/json");
+            request.AddParameter("application/json", PayloadGenerator.getPrecalcDetailsPayload(_precalc), ParameterType.RequestBody);
+            response = client.Execute(request);
+        }
+
+        [Then(@"Precalc info is updated")]
+        public void ThenPrecalcInfoIsUpdated()
+        {
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        }
+
 
     }
 }

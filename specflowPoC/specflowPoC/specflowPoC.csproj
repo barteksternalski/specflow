@@ -121,6 +121,7 @@
     <Compile Include="TestDataObjects\GeneralErrorHandlingObject.cs" />
     <Compile Include="TestDataObjects\GetListOfProjectsObject.cs" />
     <Compile Include="TestDataObjects\GetSingleProjecDetailsObject.cs" />
+    <Compile Include="TestDataObjects\PrecalcDetailsObject.cs" />
     <Compile Include="TestDataObjects\PVTFileObject.cs" />
   </ItemGroup>
   <ItemGroup>

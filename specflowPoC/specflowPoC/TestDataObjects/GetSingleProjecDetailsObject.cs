@@ -14,7 +14,7 @@ namespace specflowPoC.TestDataObjects
         public string name { get; set; }
         public string description { get; set; }
         public int numberOfCases { get; set; }
-        public List<Equipment> equipments { get; set; }
+        public List<Equipment> equipment { get; set; }
     }
 
     public class SubEquipment
