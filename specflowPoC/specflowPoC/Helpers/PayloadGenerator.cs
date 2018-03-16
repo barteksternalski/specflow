@@ -23,12 +23,13 @@ namespace specflowPoC.Helpers
             return JsonConvert.SerializeObject(payload);
         }
 
-        public static String getNewProjectPayload(Table dataTable)
+        public static String getNewProjectPayload(Table dataTable, long pvtFileId)
         {
             var payload = dataTable.CreateInstance<CreateProjectPlaceholder>();
             NewProject _newProject = new NewProject();
-            _newProject.pvtDataId = payload.pvtDataId;
-            _newProject.name = payload.name;
+            _newProject.pvtDataId = pvtFileId;
+            _newProject.pvtDataFileName = payload.fileName;
+            _newProject.name = payload.name + DateTime.Now.ToString(" yyyy-MM-dd HH:mm:ss"); ;
             _newProject.description = payload.description;
             _newProject.numberOfCases = payload.numberOfCases;
             _newProject.equipment  = new List<NewEquipment>();

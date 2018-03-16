@@ -10,7 +10,7 @@ namespace specflowPoC.TestDataObjects
     public class Project
     {
         public long id { get; set; }
-        public int pvtDataId { get; set; }
+        public long pvtDataId { get; set; }
         public string name { get; set; }
         public string description { get; set; }
         public int numberOfCases { get; set; }

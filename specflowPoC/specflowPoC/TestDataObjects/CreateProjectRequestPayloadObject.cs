@@ -20,16 +20,18 @@ namespace specflowPoC.TestDataObjects
 
     public class NewProject
     {
-        public int pvtDataId { get; set; }
         public string name { get; set; }
         public string description { get; set; }
-        public int numberOfCases { get; set; }
         public List<NewEquipment> equipment { get; set; }
+        public object lastModifiedOn { get; set; }
+        public int numberOfCases { get; set; }
+        public long pvtDataId { get; set; }
+        public string pvtDataFileName { get; set; }
     }
 
     public class CreateProjectPlaceholder
     {
-        public int pvtDataId { get; set; }
+        public string fileName { get; set; }
         public string name { get; set; }
         public string description { get; set; }
         public int numberOfCases { get; set; }

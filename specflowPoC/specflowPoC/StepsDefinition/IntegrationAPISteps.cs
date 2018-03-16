@@ -106,7 +106,7 @@ namespace specflowPoC.StepsUI
         {
             RestRequest request = new RestRequest("/api/project", Method.POST);
             request.AddHeader("Accept", "application/json");
-            request.AddParameter("application/json", PayloadGenerator.getNewProjectPayload(table), ParameterType.RequestBody);
+            request.AddParameter("application/json", PayloadGenerator.getNewProjectPayload(table, pvtFileId), ParameterType.RequestBody);
             response = client.Execute(request);
         }
 

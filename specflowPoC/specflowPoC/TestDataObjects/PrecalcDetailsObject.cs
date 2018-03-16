@@ -18,11 +18,12 @@ namespace specflowPoC.TestDataObjects
 
     public class PrecalcData
     {
-        public int numberOfCases { get; set; }
         public double standardGasDensity { get; set; }
         public double standardOilDensity { get; set; }
         public double standardWaterDensity { get; set; }
+        public int numberOfCases { get; set; }
         public List<ProductionProfileData> productionProfileData { get; set; }
+        public List<object> productionProfileDataTable { get; set; }
     }
 
     public class PrecalcDataHandling
