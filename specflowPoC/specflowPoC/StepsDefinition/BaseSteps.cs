@@ -1,5 +1,4 @@
-﻿
-using specflowPoC.EnvironmentSetup;
+﻿using specflowPoC.EnvironmentSetup;
 using specflowPoC.Pages;
 
 namespace specflowPoC.StepsUI

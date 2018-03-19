@@ -79,7 +79,7 @@ namespace specflowPoC.StepsUI
         [When(@"User sends API request to get project details")]
         public void WhenUserSendsAPIRequestToGetDetailsOfProject()
         {
-            RestRequest request = new RestRequest("/api/project/" + projectId.ToString(), Method.GET);
+            RestRequest request = new RestRequest($"/api/project/{projectId.ToString()}", Method.GET);
             request.AddHeader("Accept", "application/json");
             response = client.Execute(request);
         }
@@ -122,7 +122,7 @@ namespace specflowPoC.StepsUI
         [When(@"User send API request to get aspects details of given project")]
         public void WhenUserSendAPIRequestToGetAspectsDetailsOfGivenProject()
         {
-            RestRequest request = new RestRequest("/api/project/" + projectId.ToString() + "/aspects", Method.GET);
+            RestRequest request = new RestRequest($"/api/project/{projectId.ToString()}/aspects", Method.GET);
             request.AddHeader("Accept", "application/json");
             response = client.Execute(request);
         }
@@ -137,7 +137,7 @@ namespace specflowPoC.StepsUI
         [When(@"User send API request to update aspects details of given project")]
         public void WhenUserSendAPIRequestToUpdateAspectsDetailsOfGivenProject(Table table)
         {
-            RestRequest request = new RestRequest("/api/project/" + projectId.ToString() + "/aspects", Method.PUT);
+            RestRequest request = new RestRequest($"/api/project/{projectId.ToString()}/aspects", Method.PUT);
             request.AddHeader("Accept", "application/json");
             request.AddParameter("application/json", PayloadGenerator.getAspectsDetailsPayload(table), ParameterType.RequestBody);
             response = client.Execute(request);
@@ -152,7 +152,7 @@ namespace specflowPoC.StepsUI
         [When(@"User sends API request to delete given project")]
         public void WhenUserSendsAPIRequestToDeleteGivenProject()
         {
-            RestRequest request = new RestRequest("/api/project/" + projectId.ToString(), Method.DELETE);
+            RestRequest request = new RestRequest($"/api/project/{projectId.ToString()}", Method.DELETE);
             request.AddHeader("Accept", "application/json");
             response = client.Execute(request);
         }
@@ -205,7 +205,7 @@ namespace specflowPoC.StepsUI
         [When(@"User sends API request to get precalc info")]
         public void WhenUserSendsAPIRequestToGetPrecalcInfo()
         {
-            RestRequest request = new RestRequest("/api/project/" + projectId.ToString() + "/precalc/" + equipmentId, Method.GET);
+            RestRequest request = new RestRequest($"/api/project/{projectId.ToString()}/precalc/{equipmentId}", Method.GET);
             request.AddHeader("Accept", "application/json");
             response = client.Execute(request);
         }
@@ -221,7 +221,7 @@ namespace specflowPoC.StepsUI
         {
             PrecalcDetailsObject _precalc = JsonConvert.DeserializeObject<PrecalcDetailsObject>(response.Content);
 
-            RestRequest request = new RestRequest("/api/project/" + projectId.ToString() + "/precalc/" + equipmentId, Method.PUT);
+            RestRequest request = new RestRequest($"/api/project/{projectId.ToString()}/precalc/{equipmentId}", Method.PUT);
             request.AddHeader("Accept", "application/json");
             request.AddParameter("application/json", PayloadGenerator.getPrecalcDetailsPayload(_precalc), ParameterType.RequestBody);
             response = client.Execute(request);
@@ -233,6 +233,20 @@ namespace specflowPoC.StepsUI
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
 
+        [When(@"User sends API request to get Module-2.2 details")]
+        public void WhenUserSendsAPIRequestToGetModuleDetails()
+        {
+            RestRequest request = new RestRequest($"/api/project/{projectId.ToString()}/module22/{equipmentId}", Method.GET);
+            request.AddHeader("Accept", "application/json");
+            response = client.Execute(request);
+        }
+
+        [Then(@"Module-2.2 details are returned")]
+        public void ThenModuleDetailsAreReturned()
+        {
+            GetModule22Object error = JsonConvert.DeserializeObject<GetModule22Object>(response.Content);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        }
 
     }
 }

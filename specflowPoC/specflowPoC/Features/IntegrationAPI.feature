@@ -110,12 +110,17 @@
 			| gasDensity | oilDensity | waterDensity | press | temp  | gasRate | oilRate | waterRate |
 			| 100.0      | 123.0      | 10.0         | 20.1  | 123.3 | 23.4    | 34.5    | 34.5      |
 
-	Scenario: 12. User is able to delete uploaded PVT file
+	Scenario: 12. User is able to get Module-2.2 data for given equipment within created project
+		Given Application API is up and running
+		When User sends API request to get Module-2.2 details
+		Then Module-2.2 details are returned
+
+	Scenario: 13. User is able to delete uploaded PVT file
 		Given Application API is up and running
 		When User sends API request to delete uploaded PVT file
 		Then PVT file is deleted
 
-	Scenario: 13. User is able to delete given project
+	Scenario: 14. User is able to delete given project
 		Given Application API is up and running
 		When User sends API request to delete given project
 		Then Project is deleted
