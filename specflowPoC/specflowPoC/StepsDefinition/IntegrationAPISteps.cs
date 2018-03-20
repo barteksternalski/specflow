@@ -244,9 +244,42 @@ namespace specflowPoC.StepsUI
         [Then(@"Module-2.2 details are returned")]
         public void ThenModuleDetailsAreReturned()
         {
-            GetModule22Object error = JsonConvert.DeserializeObject<GetModule22Object>(response.Content);
+            GetModule22Object details = JsonConvert.DeserializeObject<GetModule22Object>(response.Content);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
+
+        [When(@"User sends API request to update Module-2.2 details with given data")]
+        public void WhenUserSendsAPIRequestToUpdateModuleDetailsWithGivenData(Table table)
+        {
+            GetModule22Object details = JsonConvert.DeserializeObject<GetModule22Object>(response.Content);
+            RestRequest request = new RestRequest($"/api/project/{projectId.ToString()}/module22/{equipmentId}", Method.PUT);
+            request.AddParameter("application/json", PayloadGenerator.getModule22UpdatePayload(details, table), ParameterType.RequestBody);
+            response = client.Execute(request);
+        }
+
+        [Then(@"Module-2.2 details are updated")]
+        public void ThenModuleDetailsAreUpdated()
+        {
+            Module22ResultsObject details = JsonConvert.DeserializeObject<Module22ResultsObject>(response.Content);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        [When(@"User sends API request to get Module-2.2 LoF info")]
+        public void WhenUserSendsAPIRequestToGetModuleLoFInfo()
+        {
+            RestRequest request = new RestRequest($"/api/project/{projectId.ToString()}/module22/{equipmentId}/lof", Method.GET);
+            request.AddHeader("Accept", "application/json");
+            response = client.Execute(request);
+        }
+
+        [Then(@"Module-2.2 LoF info is returned")]
+        public void ThenModuleLoFInfoIsReturned()
+        {
+            Module22LoFObject details = JsonConvert.DeserializeObject<Module22LoFObject>(response.Content);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+            Assert.IsNotNull(details.data.likelihoodOfFailureData.Count);
+        }
+
 
     }
 }

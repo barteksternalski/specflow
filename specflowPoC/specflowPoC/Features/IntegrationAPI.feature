@@ -115,12 +115,28 @@
 		When User sends API request to get Module-2.2 details
 		Then Module-2.2 details are returned
 
-	Scenario: 13. User is able to delete uploaded PVT file
+	Scenario Outline: 13. User is able to update Module 2.2 data for given equipment within created project
+		Given Application API is up and running
+		When User sends API request to update Module-2.2 details with given data
+			| mainPipeOutsideDiameter | mainPipeInsideDiameter | mainPipeSpanLength |
+			| <outsideDiameter>       | <insideDiameter>       | <length>           |
+		Then Module-2.2 details are updated
+
+		Examples:
+			| outsideDiameter | insideDiameter | length |
+			| 219.1           | 136.9          | 5.092  |
+
+	Scenario: 14. User is able to get Module 2.2 LoF factor for given equipment within created project
+		Given Application API is up and running
+		When User sends API request to get Module-2.2 LoF info
+		Then Module-2.2 LoF info is returned
+
+	Scenario: 15. User is able to delete uploaded PVT file
 		Given Application API is up and running
 		When User sends API request to delete uploaded PVT file
 		Then PVT file is deleted
 
-	Scenario: 14. User is able to delete given project
+	Scenario: 16. User is able to delete given project
 		Given Application API is up and running
 		When User sends API request to delete given project
 		Then Project is deleted

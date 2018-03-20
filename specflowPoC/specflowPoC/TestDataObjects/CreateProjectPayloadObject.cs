@@ -2,6 +2,10 @@
 
 namespace specflowPoC.TestDataObjects
 {
+    class CreateProjectResponsePayloadObject
+    {
+        public long id { get; set; }
+    }
     class CreateProjectRequestPayloadObject
     {
         public NewProject project { get; set; }
