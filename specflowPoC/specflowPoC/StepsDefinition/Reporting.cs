@@ -2,6 +2,7 @@
 using AventStack.ExtentReports.Reporter;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
+using specflowPoC.Helpers;
 using System.IO;
 using System.Reflection;
 using TechTalk.SpecFlow;
@@ -9,8 +10,14 @@ using TechTalk.SpecFlow;
 namespace specflowPoC.StepsDefinition
 {
     [Binding]
-    public class Reporting
+    class Reporting
     {
+        TestUtility utility;
+        public Reporting(TestUtility utility)
+        {
+            this.utility = utility;
+        }
+
         protected static ExtentReports _extent;
         protected static ExtentTest _test;
 
@@ -30,14 +37,14 @@ namespace specflowPoC.StepsDefinition
         }
 
         [BeforeScenario]
-        public static void BeforeTest()
+        public void BeforeTest()
         {
             _test = _extent.CreateTest(ScenarioContext.Current.ScenarioInfo.Title);
             _test.Info("Details: " + TestContext.CurrentContext.Test.Name);
         }
 
         [AfterScenario]
-        public static void AfterTest()
+        public void AfterTest()
         {
             var status = TestContext.CurrentContext.Result.Outcome.Status;
             var stacktrace = string.IsNullOrEmpty(TestContext.CurrentContext.Result.StackTrace)
@@ -60,8 +67,18 @@ namespace specflowPoC.StepsDefinition
                     logstatus = Status.Pass;
                     break;
             }
+            _test.Info("Request: " + utility.request.Resource);
+            _test.Info("Response: " + TestUtility.response.Content.ToString());
             _test.Log(logstatus, "Test ended with " + logstatus + stacktrace);
             _extent.Flush();
+        }
+
+        [AfterStep]
+        public void AfterStep()
+        {
+            string stepName = ScenarioStepContext.Current.StepInfo.Text;
+            var stepType = ScenarioStepContext.Current.StepInfo.StepDefinitionType;
+            _test.Info($"[{stepType}]: {stepName}");
         }
     }
 }

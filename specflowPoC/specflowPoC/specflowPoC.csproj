@@ -131,6 +131,7 @@
     <Compile Include="Helpers\GmailExtractor.cs" />
     <Compile Include="Helpers\PayloadGenerator.cs" />
     <Compile Include="Helpers\Procedures.cs" />
+    <Compile Include="Helpers\TestUtility.cs" />
     <Compile Include="Locators\CreateUserLocators.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
