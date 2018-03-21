@@ -32,7 +32,8 @@ namespace specflowPoC.StepsDefinition
         [BeforeScenario]
         public static void BeforeTest()
         {
-            _test = _extent.CreateTest(TestContext.CurrentContext.Test.Name);
+            _test = _extent.CreateTest(ScenarioContext.Current.ScenarioInfo.Title);
+            _test.Info("Details: " + TestContext.CurrentContext.Test.Name);
         }
 
         [AfterScenario]
@@ -59,7 +60,6 @@ namespace specflowPoC.StepsDefinition
                     logstatus = Status.Pass;
                     break;
             }
-
             _test.Log(logstatus, "Test ended with " + logstatus + stacktrace);
             _extent.Flush();
         }

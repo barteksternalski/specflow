@@ -64,8 +64,8 @@
 		Then Project is created
 
 		Examples:
-			| pvtFileName          | name    | desc             | caseNo | noOfEquip | noOfSubEquip |
-			| PVT_correctSmall.tab | apiTest | some description | 3      | 2         | 2            |
+			| pvtFileName     | name    | desc             | caseNo | noOfEquip | noOfSubEquip |
+			| PVT_correct.tab | apiTest | some description | 3      | 2         | 2            |
 
 	Scenario: 06. User is able to get list of created projects
 		Given Application API is up and running
@@ -131,12 +131,33 @@
 		When User sends API request to get Module-2.2 LoF info
 		Then Module-2.2 LoF info is returned
 
-	Scenario: 15. User is able to delete uploaded PVT file
+	Scenario: 15. User is able to get Module-2.6 data for given equipment within created project
+		Given Application API is up and running
+		When User sends API request to get Module-2.6 details
+		Then Module-2.6 details are returned
+
+	Scenario Outline: 16. User is able to update Module 2.6 data for given equipment within created project
+		Given Application API is up and running
+		When User sends API request to update Module-2.6 details with given data
+			| insideDiameter   | length   | mainBranchID   |
+			| <insideDiameter> | <length> | <mainBranchID> |
+		Then Module-2.6 details are updated
+
+		Examples:
+			| insideDiameter | length | mainBranchID |
+			| 136.9          | 5      | 11           |
+
+	Scenario: 17. User is able to get Module 2.6 LoF factor for given equipment within created project
+		Given Application API is up and running
+		When User sends API request to get Module-2.6 LoF info
+		Then Module-2.6 LoF info is returned
+
+	Scenario: 18. User is able to delete uploaded PVT file
 		Given Application API is up and running
 		When User sends API request to delete uploaded PVT file
 		Then PVT file is deleted
 
-	Scenario: 16. User is able to delete given project
+	Scenario: 19. User is able to delete given project
 		Given Application API is up and running
 		When User sends API request to delete given project
 		Then Project is deleted

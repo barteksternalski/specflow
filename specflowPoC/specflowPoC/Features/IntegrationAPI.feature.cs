@@ -200,7 +200,7 @@ namespace specflowPoC.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("05. User is able to create new project")]
-        [NUnit.Framework.TestCaseAttribute("PVT_correctSmall.tab", "apiTest", "some description", "3", "2", "2", null)]
+        [NUnit.Framework.TestCaseAttribute("PVT_correct.tab", "apiTest", "some description", "3", "2", "2", null)]
         public virtual void _05_UserIsAbleToCreateNewProject(string pvtFileName, string name, string desc, string caseNo, string noOfEquip, string noOfSubEquip, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("05. User is able to create new project", exampleTags);
@@ -451,34 +451,101 @@ namespace specflowPoC.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("15. User is able to delete uploaded PVT file")]
-        public virtual void _15_UserIsAbleToDeleteUploadedPVTFile()
+        [NUnit.Framework.DescriptionAttribute("15. User is able to get Module-2.6 data for given equipment within created projec" +
+            "t")]
+        public virtual void _15_UserIsAbleToGetModule_2_6DataForGivenEquipmentWithinCreatedProject()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("15. User is able to delete uploaded PVT file", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("15. User is able to get Module-2.6 data for given equipment within created projec" +
+                    "t", ((string[])(null)));
 #line 134
  this.ScenarioSetup(scenarioInfo);
 #line 135
   testRunner.Given("Application API is up and running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 136
-  testRunner.When("User sends API request to delete uploaded PVT file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+  testRunner.When("User sends API request to get Module-2.6 details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 137
+  testRunner.Then("Module-2.6 details are returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("16. User is able to update Module 2.6 data for given equipment within created pro" +
+            "ject")]
+        [NUnit.Framework.TestCaseAttribute("136.9", "5", "11", null)]
+        public virtual void _16_UserIsAbleToUpdateModule2_6DataForGivenEquipmentWithinCreatedProject(string insideDiameter, string length, string mainBranchID, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("16. User is able to update Module 2.6 data for given equipment within created pro" +
+                    "ject", exampleTags);
+#line 139
+ this.ScenarioSetup(scenarioInfo);
+#line 140
+  testRunner.Given("Application API is up and running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                        "insideDiameter",
+                        "length",
+                        "mainBranchID"});
+            table7.AddRow(new string[] {
+                        string.Format("{0}", insideDiameter),
+                        string.Format("{0}", length),
+                        string.Format("{0}", mainBranchID)});
+#line 141
+  testRunner.When("User sends API request to update Module-2.6 details with given data", ((string)(null)), table7, "When ");
+#line 144
+  testRunner.Then("Module-2.6 details are updated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("17. User is able to get Module 2.6 LoF factor for given equipment within created " +
+            "project")]
+        public virtual void _17_UserIsAbleToGetModule2_6LoFFactorForGivenEquipmentWithinCreatedProject()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("17. User is able to get Module 2.6 LoF factor for given equipment within created " +
+                    "project", ((string[])(null)));
+#line 150
+ this.ScenarioSetup(scenarioInfo);
+#line 151
+  testRunner.Given("Application API is up and running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 152
+  testRunner.When("User sends API request to get Module-2.6 LoF info", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 153
+  testRunner.Then("Module-2.6 LoF info is returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("18. User is able to delete uploaded PVT file")]
+        public virtual void _18_UserIsAbleToDeleteUploadedPVTFile()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("18. User is able to delete uploaded PVT file", ((string[])(null)));
+#line 155
+ this.ScenarioSetup(scenarioInfo);
+#line 156
+  testRunner.Given("Application API is up and running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 157
+  testRunner.When("User sends API request to delete uploaded PVT file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 158
   testRunner.Then("PVT file is deleted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("16. User is able to delete given project")]
-        public virtual void _16_UserIsAbleToDeleteGivenProject()
+        [NUnit.Framework.DescriptionAttribute("19. User is able to delete given project")]
+        public virtual void _19_UserIsAbleToDeleteGivenProject()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("16. User is able to delete given project", ((string[])(null)));
-#line 139
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("19. User is able to delete given project", ((string[])(null)));
+#line 160
  this.ScenarioSetup(scenarioInfo);
-#line 140
+#line 161
   testRunner.Given("Application API is up and running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 141
+#line 162
   testRunner.When("User sends API request to delete given project", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 142
+#line 163
   testRunner.Then("Project is deleted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

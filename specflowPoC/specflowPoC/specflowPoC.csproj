@@ -151,6 +151,7 @@
     <Compile Include="TestDataObjects\GetListOfProjectsObject.cs" />
     <Compile Include="TestDataObjects\Module22Object.cs" />
     <Compile Include="TestDataObjects\GetSingleProjecDetailsObject.cs" />
+    <Compile Include="TestDataObjects\Module26Object.cs" />
     <Compile Include="TestDataObjects\PrecalcDetailsObject.cs" />
     <Compile Include="TestDataObjects\PVTFileObject.cs" />
   </ItemGroup>

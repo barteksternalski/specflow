@@ -71,17 +71,17 @@ namespace specflowPoC.Helpers
         {
             PrecalcDetailsObject _precalcToReturn = _precalc;
 
-            _precalcToReturn.data.standardGasDensity = Procedures.GetRandomNumber(0, 1000, 2);
-            _precalcToReturn.data.standardOilDensity = Procedures.GetRandomNumber(0, 1000, 3);
-            _precalcToReturn.data.standardWaterDensity = Procedures.GetRandomNumber(0, 1000, 2);
+            _precalcToReturn.data.standardGasDensity = Procedures.GetRandomNumber(0, 1, 5);
+            _precalcToReturn.data.standardOilDensity = Procedures.GetRandomNumber(300, 1000, 3);
+            _precalcToReturn.data.standardWaterDensity = Procedures.GetRandomNumber(200, 1000, 2);
 
             for (int i = 0; i < _precalcToReturn.data.productionProfileData.Count; i++)
             {
-                _precalcToReturn.data.productionProfileData[i].pressure = Procedures.GetRandomNumber(0, 1000, 2);
-                _precalcToReturn.data.productionProfileData[i].temperature = Procedures.GetRandomNumber(0, 1000, 1);
-                _precalcToReturn.data.productionProfileData[i].gasRateAtStandardConditions = Procedures.GetRandomNumber(0, 1000, 4);
-                _precalcToReturn.data.productionProfileData[i].oilRateAtStandardConditions = Procedures.GetRandomNumber(0, 1000, 2);
-                _precalcToReturn.data.productionProfileData[i].waterRateAtStandardConditions = Procedures.GetRandomNumber(0, 1000, 2);
+                _precalcToReturn.data.productionProfileData[i].pressure = Procedures.GetRandomNumber(10000000, 100000000, 0);
+                _precalcToReturn.data.productionProfileData[i].temperature = Procedures.GetRandomNumber(40, 80, 5);
+                _precalcToReturn.data.productionProfileData[i].gasRateAtStandardConditions = Procedures.GetRandomNumber(40, 80, 5);
+                _precalcToReturn.data.productionProfileData[i].oilRateAtStandardConditions = Procedures.GetRandomNumber(0.001, 0.009, 6);
+                _precalcToReturn.data.productionProfileData[i].waterRateAtStandardConditions = Procedures.GetRandomNumber(0.0001, 0.0005, 6);
             }
 
             return JsonConvert.SerializeObject(_precalcToReturn);
@@ -100,17 +100,44 @@ namespace specflowPoC.Helpers
 
             for (int i = 0; i < _module22Data.data.inputs.Count; i++)
             {
-                _module22Data.data.inputs[i].gasFlowRate = Procedures.GetRandomNumber(0, 1, 3);
-                _module22Data.data.inputs[i].oilFlowRate = Procedures.GetRandomNumber(0, 1, 3);
-                _module22Data.data.inputs[i].waterFlowRate = Procedures.GetRandomNumber(0, 1, 3);
-                _module22Data.data.inputs[i].gasDensity = Procedures.GetRandomNumber(100, 1000, 1);
-                _module22Data.data.inputs[i].oilDensity = Procedures.GetRandomNumber(100, 1000, 1);
-                _module22Data.data.inputs[i].waterDensity = Procedures.GetRandomNumber(100, 1000, 1);
-                _module22Data.data.inputs[i].gasViscosity = Procedures.GetRandomNumber(0, 1, 5);
+                _module22Data.data.inputs[i].gasFlowRate = Procedures.GetRandomNumber(0.01, 0.5, 5);
+                _module22Data.data.inputs[i].oilFlowRate = Procedures.GetRandomNumber(0.001, 0.009, 6);
+                _module22Data.data.inputs[i].waterFlowRate = Procedures.GetRandomNumber(0.0001, 0.0009, 6);
+                _module22Data.data.inputs[i].gasDensity = Procedures.GetRandomNumber(100, 1000, 5);
+                _module22Data.data.inputs[i].oilDensity = Procedures.GetRandomNumber(100, 300, 5);
+                _module22Data.data.inputs[i].waterDensity = Procedures.GetRandomNumber(800, 1100, 1);
+                _module22Data.data.inputs[i].gasViscosity = Procedures.GetRandomNumber(0.00001, 0.00009, 8);
             }
 
             return JsonConvert.SerializeObject(_module22Data);
         }
+
+        public static String getModule26UpdatePayload(GetModule26Object details, Table dataTable)
+        {
+            PutModule26Object _module26Data = new PutModule26Object();
+            var helper = dataTable.CreateInstance<Module26Helper>();
+
+            _module26Data.data = new Module26PutData();
+            _module26Data.data.insideDiameter = helper.insideDiameter;
+            _module26Data.data.length = helper.length;
+            _module26Data.data.mainBranchID = helper.mainBranchID;
+            _module26Data.data.inputs = details.data.inputs;
+
+            for (int i = 0; i < _module26Data.data.inputs.Count; i++)
+            {
+                _module26Data.data.inputs[i].waterFlowRate = Procedures.GetRandomNumber(0.0001, 0.0009, 6);
+                _module26Data.data.inputs[i].gasFlowRate = Procedures.GetRandomNumber(0.01, 0.5, 5);
+                _module26Data.data.inputs[i].oilFlowRate = Procedures.GetRandomNumber(0.001, 0.009, 6);
+                _module26Data.data.inputs[i].waterDensity = Procedures.GetRandomNumber(800, 1100, 1);
+                _module26Data.data.inputs[i].gasDensity = Procedures.GetRandomNumber(100, 1000, 5);
+                _module26Data.data.inputs[i].oilDensity = Procedures.GetRandomNumber(100, 300, 5);
+                _module26Data.data.inputs[i].gasViscosity = Procedures.GetRandomNumber(0.00001, 0.00009, 8);
+                _module26Data.data.inputs[i].speedOfSound = Procedures.GetRandomNumber(3500000, 4500000, 0);
+            }
+
+            return JsonConvert.SerializeObject(_module26Data);
+        }
+
 
     }
 }
