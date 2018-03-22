@@ -1,9 +1,12 @@
 ﻿using AventStack.ExtentReports;
+using AventStack.ExtentReports.MarkupUtils;
 using AventStack.ExtentReports.Reporter;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using specflowPoC.Helpers;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using TechTalk.SpecFlow;
 
@@ -24,7 +27,11 @@ namespace specflowPoC.StepsDefinition
         [BeforeFeature]
         protected static void Setup()
         {
-            var htmlReporter = new ExtentHtmlReporter(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"..\..\TestReports\", "Report.html"));
+            ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"..\..\TestReports\", "Report.html"));
+            htmlReporter.AppendExisting = true;
+            htmlReporter.Configuration().DocumentTitle = "SLB OneSubsea";
+            htmlReporter.Configuration().ReportName = "API tests";
+            htmlReporter.Configuration().Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
 
             _extent = new ExtentReports();
             _extent.AttachReporter(htmlReporter);
@@ -40,7 +47,6 @@ namespace specflowPoC.StepsDefinition
         public void BeforeTest()
         {
             _test = _extent.CreateTest(ScenarioContext.Current.ScenarioInfo.Title);
-            _test.Info("Details: " + TestContext.CurrentContext.Test.Name);
         }
 
         [AfterScenario]
@@ -69,16 +75,23 @@ namespace specflowPoC.StepsDefinition
             }
             _test.Info("Request: " + utility.request.Resource);
             _test.Info("Response: " + TestUtility.response.Content.ToString());
-            _test.Log(logstatus, "Test ended with " + logstatus + stacktrace);
+            _test.Log(logstatus, "Test ended with " + logstatus + "\n\n" + stacktrace);
             _extent.Flush();
         }
 
         [AfterStep]
         public void AfterStep()
         {
-            string stepName = ScenarioStepContext.Current.StepInfo.Text;
-            var stepType = ScenarioStepContext.Current.StepInfo.StepDefinitionType;
-            _test.Info($"[{stepType}]: {stepName}");
+            _test.Info($"[{ScenarioStepContext.Current.StepInfo.StepDefinitionType}]: {ScenarioStepContext.Current.StepInfo.Text}");
+            if (ScenarioStepContext.Current.StepInfo.Table != null)
+            {
+                List<List<string>> data = new List<List<string>>();
+                data.Add(ScenarioStepContext.Current.StepInfo.Table.Header.ToList());
+                data.Add(ScenarioStepContext.Current.StepInfo.Table.Rows[0].Values.ToList());
+                IMarkup table = MarkupHelper.CreateTable(data.Select(a => a.ToArray()).ToArray());
+                _test.Info(table);
+            }            
         }
+
     }
 }
