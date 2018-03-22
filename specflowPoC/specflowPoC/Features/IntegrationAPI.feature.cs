@@ -200,7 +200,7 @@ namespace specflowPoC.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("05. User is able to create new project")]
-        [NUnit.Framework.TestCaseAttribute("PVT_correct.tab", "apiTest", "some description", "3", "2", "2", null)]
+        [NUnit.Framework.TestCaseAttribute("PVT_correct.tab", "apiTest", "some description", "10", "2", "2", null)]
         public virtual void _05_UserIsAbleToCreateNewProject(string pvtFileName, string name, string desc, string caseNo, string noOfEquip, string noOfSubEquip, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("05. User is able to create new project", exampleTags);

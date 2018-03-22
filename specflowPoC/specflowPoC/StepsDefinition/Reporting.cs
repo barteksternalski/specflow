@@ -1,6 +1,7 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.MarkupUtils;
 using AventStack.ExtentReports.Reporter;
+using Newtonsoft.Json;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using specflowPoC.Helpers;
@@ -73,16 +74,17 @@ namespace specflowPoC.StepsDefinition
                     logstatus = Status.Pass;
                     break;
             }
-            _test.Info("Request: " + utility.request.Resource);
-            _test.Info("Response: " + TestUtility.response.Content.ToString());
-            _test.Log(logstatus, "Test ended with " + logstatus + "\n\n" + stacktrace);
+            _test.Info("Request: <i>" + utility.request.Resource + "</i>");
+            if (utility.requestBody != null) _test.Info("Request body: <pre>" + utility.requestBody + "</pre>");
+            _test.Info("Response: <pre>" + utility.response.Content.ToString() + "</pre>");
+            _test.Log(logstatus, "Test ended with " + logstatus + stacktrace);
             _extent.Flush();
         }
 
         [AfterStep]
         public void AfterStep()
         {
-            _test.Info($"[{ScenarioStepContext.Current.StepInfo.StepDefinitionType}]: {ScenarioStepContext.Current.StepInfo.Text}");
+            _test.Info($"<b>[{ScenarioStepContext.Current.StepInfo.StepDefinitionType}]</b>: {ScenarioStepContext.Current.StepInfo.Text}");
             if (ScenarioStepContext.Current.StepInfo.Table != null)
             {
                 List<List<string>> data = new List<List<string>>();
