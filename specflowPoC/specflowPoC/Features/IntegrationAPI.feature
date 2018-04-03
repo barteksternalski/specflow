@@ -65,7 +65,7 @@
 
 		Examples:
 			| pvtFileName     | name    | desc             | caseNo | noOfEquip | noOfSubEquip |
-			| PVT_correct.tab | apiTest | some description | 10     | 2         | 2            |
+			| PVT_correct.tab | apiTest | some description | 100    | 2         | 2            |  
 
 	Scenario: 06. User is able to get list of created projects
 		Given Application API is up and running
