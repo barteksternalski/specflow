@@ -269,7 +269,7 @@ namespace specflowPoC.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("08. User is able to update aspects details of given project")]
-        [NUnit.Framework.TestCaseAttribute("1000", "module should be checked", "false", "", "false", "", "false", "", "false", "", null)]
+        [NUnit.Framework.TestCaseAttribute("50000", "module should be checked", "false", "", "false", "", "false", "", "false", "", null)]
         public virtual void _08_UserIsAbleToUpdateAspectsDetailsOfGivenProject(string maxKinEnergy, string maxKinComment, string mod27, string mod27_Comment, string mod29, string mod29_Comment, string mod28, string mod28_Comment, string mod4, string mod4_Comment, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("08. User is able to update aspects details of given project", exampleTags);
@@ -320,7 +320,7 @@ namespace specflowPoC.Features
 #line 94
   testRunner.When("User send API request to get aspects details of given project", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 95
-  testRunner.Then("Aspects details are returned with Max kinetic energy set to 1000.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.Then("Aspects details are returned with Max kinetic energy set to 50000.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

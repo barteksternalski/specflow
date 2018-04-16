@@ -87,12 +87,12 @@
 
 		Examples:
 			| maxKinEnergy | maxKinComment            | mod27 | mod27_comment | mod29 | mod29_comment | mod28 | mod28_comment | mod4  | mod4_comment |
-			| 1000         | module should be checked | false |               | false |               | false |               | false |              |
+			| 50000        | module should be checked | false |               | false |               | false |               | false |              |
 
 	Scenario: 09. User is able to get aspects details of given project
 		Given Application API is up and running
 		When User send API request to get aspects details of given project
-		Then Aspects details are returned with Max kinetic energy set to 1000.0
+		Then Aspects details are returned with Max kinetic energy set to 50000.0
 
 	Scenario: 10. User is able to get precalc info about given equipment within created project
 		Given Application API is up and running

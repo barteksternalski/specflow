@@ -188,7 +188,7 @@ namespace specflowPoC.StepsUI
             Assert.AreEqual(HttpStatusCode.OK, utility.response.StatusCode);
         }
 
-        [Then(@"Proper error message (.+) is returned")]
+        [Then(@"Proper error message (.*) is returned")]
         public void ThenProperErrorMessageInvalidPVTFileFormat_IsReturned(String errorMessage)
         {
             GeneralErrorHandlingObject error = JsonConvert.DeserializeObject<GeneralErrorHandlingObject>(utility.response.Content);
