@@ -29,7 +29,7 @@ namespace specflowPoC.Helpers
             NewProject _newProject = new NewProject();
             _newProject.pvtDataId = pvtFileId;
             _newProject.pvtDataFileName = payload.fileName;
-            _newProject.name = payload.name + DateTime.Now.ToString(" yyyy-MM-dd HH:mm:ss"); ;
+            _newProject.name = payload.name + DateTime.Now.ToString(" yyyy-MM-dd HH:mm:ss");
             _newProject.description = payload.description;
             _newProject.numberOfCases = payload.numberOfCases;
             _newProject.equipment  = new List<NewEquipment>();
